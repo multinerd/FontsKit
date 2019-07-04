@@ -1,27 +1,16 @@
-//
-//  File.swift
-//  Pods-Mia-Fonts-CodeGen
-//
-//  Created by Michael Hedaitulla on 7/4/19.
-//
-
-import Foundation
-
-
-
 // MARK: - Academy Engraved LET
-enum academyEngravedLET: String, Font {
+enum academyEngravedLET: String, FontRepresentable {
     case regular = "AcademyEngravedLetPlain"
 }
 
 // MARK: - Al Nile
-enum alNile: String, Font {
+enum alNile: String, FontRepresentable {
     case regular = "AlNile"
     case bold = "AlNile-Bold"
 }
 
 // MARK: - American Typewriter
-enum americanTypewriter: String, Font {
+enum americanTypewriter: String, FontRepresentable {
     case regular = "AmericanTypewriter"
     case bold = "AmericanTypewriter-Bold"
     case condensed = "AmericanTypewriter-Condensed"
@@ -32,12 +21,12 @@ enum americanTypewriter: String, Font {
 }
 
 // MARK: - Apple Color Emoji
-enum appleColorEmoji: String, Font {
+enum appleColorEmoji: String, FontRepresentable {
     case regular = "AppleColorEmoji"
 }
 
 // MARK: - Apple SD Gothic Neo
-enum appleSDGothicNeo: String, Font {
+enum appleSDGothicNeo: String, FontRepresentable {
     case bold = "AppleSDGothicNeo-Bold"
     case light = "AppleSDGothicNeo-Light"
     case medium = "AppleSDGothicNeo-Medium"
@@ -48,12 +37,12 @@ enum appleSDGothicNeo: String, Font {
 }
 
 // MARK: - Apple Symbols
-enum appleSymbols: String, Font {
+enum appleSymbols: String, FontRepresentable {
     case regular = "AppleSymbols"
 }
 
 // MARK: - Arial
-enum arial: String, Font {
+enum arial: String, FontRepresentable {
     case boldItalicMT = "Arial-BoldItalicMT"
     case boldMT = "Arial-BoldMT"
     case italicMT = "Arial-ItalicMT"
@@ -61,19 +50,19 @@ enum arial: String, Font {
 }
 
 // MARK: - Arial Hebrew
-enum arialHebrew: String, Font {
+enum arialHebrew: String, FontRepresentable {
     case regular = "ArialHebrew"
     case bold = "ArialHebrew-Bold"
     case light = "ArialHebrew-Light"
 }
 
 // MARK: - Arial Rounded MT Bold
-enum arialRoundedMTBold: String, Font {
+enum arialRoundedMTBold: String, FontRepresentable {
     case regular = "ArialRoundedMTBold"
 }
 
 // MARK: - Avenir
-enum avenir: String, Font {
+enum avenir: String, FontRepresentable {
     case black = "Avenir-Black"
     case blackOblique = "Avenir-BlackOblique"
     case book = "Avenir-Book"
@@ -89,7 +78,7 @@ enum avenir: String, Font {
 }
 
 // MARK: - Avenir Next
-enum avenirNext: String, Font {
+enum avenirNext: String, FontRepresentable {
     case bold = "AvenirNext-Bold"
     case boldItalic = "AvenirNext-BoldItalic"
     case demiBold = "AvenirNext-DemiBold"
@@ -105,7 +94,7 @@ enum avenirNext: String, Font {
 }
 
 // MARK: - Avenir Next Condensed
-enum avenirNextCondensed: String, Font {
+enum avenirNextCondensed: String, FontRepresentable {
     case bold = "AvenirNextCondensed-Bold"
     case boldItalic = "AvenirNextCondensed-BoldItalic"
     case demiBold = "AvenirNextCondensed-DemiBold"
@@ -120,13 +109,8 @@ enum avenirNextCondensed: String, Font {
     case ultraLightItalic = "AvenirNextCondensed-UltraLightItalic"
 }
 
-// MARK: - Bangla Sangam MN
-enum banglaSangamMN: String, Font {
-    
-}
-
 // MARK: - Baskerville
-enum baskerville: String, Font {
+enum baskerville: String, FontRepresentable {
     case regular = "Baskerville"
     case bold = "Baskerville-Bold"
     case boldItalic = "Baskerville-BoldItalic"
@@ -136,48 +120,48 @@ enum baskerville: String, Font {
 }
 
 // MARK: - Bodoni 72
-enum bodoni72: String, Font {
+enum bodoni72: String, FontRepresentable {
     case bold = "BodoniSvtyTwoITCTT-Bold"
     case book = "BodoniSvtyTwoITCTT-Book"
     case bookIta = "BodoniSvtyTwoITCTT-BookIta"
 }
 
 // MARK: - Bodoni 72 Oldstyle
-enum bodoni72Oldstyle: String, Font {
+enum bodoni72Oldstyle: String, FontRepresentable {
     case bold = "BodoniSvtyTwoOSITCTT-Bold"
     case book = "BodoniSvtyTwoOSITCTT-Book"
     case bookIt = "BodoniSvtyTwoOSITCTT-BookIt"
 }
 
 // MARK: - Bodoni 72 Smallcaps
-enum bodoni72Smallcaps: String, Font {
+enum bodoni72Smallcaps: String, FontRepresentable {
     case book = "BodoniSvtyTwoSCITCTT-Book"
 }
 
 // MARK: - Bodoni Ornaments
-enum bodoniOrnaments: String, Font {
+enum bodoniOrnaments: String, FontRepresentable {
     case regular = "BodoniOrnamentsITCTT"
 }
 
 // MARK: - Bradley Hand
-enum bradleyHand: String, Font {
+enum bradleyHand: String, FontRepresentable {
     case bold = "BradleyHandITCTT-Bold"
 }
 
 // MARK: - Chalkboard SE
-enum chalkboardSE: String, Font {
+enum chalkboardSE: String, FontRepresentable {
     case bold = "ChalkboardSE-Bold"
     case light = "ChalkboardSE-Light"
     case regular = "ChalkboardSE-Regular"
 }
 
 // MARK: - Chalkduster
-enum chalkduster: String, Font {
+enum chalkduster: String, FontRepresentable {
     case regular = "Chalkduster"
 }
 
 // MARK: - Charter
-enum charter: String, Font {
+enum charter: String, FontRepresentable {
     case black = "Charter-Black"
     case blackItalic = "Charter-BlackItalic"
     case bold = "Charter-Bold"
@@ -187,7 +171,7 @@ enum charter: String, Font {
 }
 
 // MARK: - Cochin
-enum cochin: String, Font {
+enum cochin: String, FontRepresentable {
     case regular = "Cochin"
     case bold = "Cochin-Bold"
     case boldItalic = "Cochin-BoldItalic"
@@ -195,14 +179,14 @@ enum cochin: String, Font {
 }
 
 // MARK: - Copperplate
-enum copperplate: String, Font {
+enum copperplate: String, FontRepresentable {
     case regular = "Copperplate"
     case bold = "Copperplate-Bold"
     case light = "Copperplate-Light"
 }
 
 // MARK: - Courier
-enum courier: String, Font {
+enum courier: String, FontRepresentable {
     case regular = "Courier"
     case bold = "Courier-Bold"
     case boldOblique = "Courier-BoldOblique"
@@ -210,7 +194,7 @@ enum courier: String, Font {
 }
 
 // MARK: - Courier New
-enum courierNew: String, Font {
+enum courierNew: String, FontRepresentable {
     case boldItalicMT = "CourierNewPS-BoldItalicMT"
     case boldMT = "CourierNewPS-BoldMT"
     case italicMT = "CourierNewPS-ItalicMT"
@@ -218,17 +202,17 @@ enum courierNew: String, Font {
 }
 
 // MARK: - DIN Alternate
-enum dINAlternate: String, Font {
+enum dINAlternate: String, FontRepresentable {
     case bold = "DINAlternate-Bold"
 }
 
 // MARK: - DIN Condensed
-enum dINCondensed: String, Font {
+enum dINCondensed: String, FontRepresentable {
     case bold = "DINCondensed-Bold"
 }
 
 // MARK: - Damascus
-enum damascus: String, Font {
+enum damascus: String, FontRepresentable {
     case regular = "Damascus"
     case regular = "DamascusBold"
     case regular = "DamascusLight"
@@ -237,32 +221,32 @@ enum damascus: String, Font {
 }
 
 // MARK: - Devanagari Sangam MN
-enum devanagariSangamMN: String, Font {
+enum devanagariSangamMN: String, FontRepresentable {
     case regular = "DevanagariSangamMN"
     case bold = "DevanagariSangamMN-Bold"
 }
 
 // MARK: - Didot
-enum didot: String, Font {
+enum didot: String, FontRepresentable {
     case regular = "Didot"
     case bold = "Didot-Bold"
     case italic = "Didot-Italic"
 }
 
 // MARK: - Euphemia UCAS
-enum euphemiaUCAS: String, Font {
+enum euphemiaUCAS: String, FontRepresentable {
     case regular = "EuphemiaUCAS"
     case bold = "EuphemiaUCAS-Bold"
     case italic = "EuphemiaUCAS-Italic"
 }
 
 // MARK: - Farah
-enum farah: String, Font {
+enum farah: String, FontRepresentable {
     case regular = "Farah"
 }
 
 // MARK: - Futura
-enum futura: String, Font {
+enum futura: String, FontRepresentable {
     case bold = "Futura-Bold"
     case condensedExtraBold = "Futura-CondensedExtraBold"
     case condensedMedium = "Futura-CondensedMedium"
@@ -271,19 +255,19 @@ enum futura: String, Font {
 }
 
 // MARK: - Galvji
-enum galvji: String, Font {
+enum galvji: String, FontRepresentable {
     case regular = "Galvji"
     case bold = "Galvji-Bold"
 }
 
 // MARK: - Geeza Pro
-enum geezaPro: String, Font {
+enum geezaPro: String, FontRepresentable {
     case regular = "GeezaPro"
     case bold = "GeezaPro-Bold"
 }
 
 // MARK: - Georgia
-enum georgia: String, Font {
+enum georgia: String, FontRepresentable {
     case regular = "Georgia"
     case bold = "Georgia-Bold"
     case boldItalic = "Georgia-BoldItalic"
@@ -291,7 +275,7 @@ enum georgia: String, Font {
 }
 
 // MARK: - Gill Sans
-enum gillSans: String, Font {
+enum gillSans: String, FontRepresentable {
     case regular = "GillSans"
     case bold = "GillSans-Bold"
     case boldItalic = "GillSans-BoldItalic"
@@ -303,18 +287,8 @@ enum gillSans: String, Font {
     case ultraBold = "GillSans-UltraBold"
 }
 
-// MARK: - Heiti SC
-enum heitiSC: String, Font {
-    
-}
-
-// MARK: - Heiti TC
-enum heitiTC: String, Font {
-    
-}
-
 // MARK: - Helvetica
-enum helvetica: String, Font {
+enum helvetica: String, FontRepresentable {
     case regular = "Helvetica"
     case bold = "Helvetica-Bold"
     case boldOblique = "Helvetica-BoldOblique"
@@ -324,7 +298,7 @@ enum helvetica: String, Font {
 }
 
 // MARK: - Helvetica Neue
-enum helveticaNeue: String, Font {
+enum helveticaNeue: String, FontRepresentable {
     case regular = "HelveticaNeue"
     case bold = "HelveticaNeue-Bold"
     case boldItalic = "HelveticaNeue-BoldItalic"
@@ -342,25 +316,25 @@ enum helveticaNeue: String, Font {
 }
 
 // MARK: - Hiragino Maru Gothic ProN
-enum hiraginoMaruGothicProN: String, Font {
+enum hiraginoMaruGothicProN: String, FontRepresentable {
     case w4 = "HiraMaruProN-W4"
 }
 
 // MARK: - Hiragino Mincho ProN
-enum hiraginoMinchoProN: String, Font {
+enum hiraginoMinchoProN: String, FontRepresentable {
     case w3 = "HiraMinProN-W3"
     case w6 = "HiraMinProN-W6"
 }
 
 // MARK: - Hiragino Sans
-enum hiraginoSans: String, Font {
+enum hiraginoSans: String, FontRepresentable {
     case w3 = "HiraginoSans-W3"
     case w6 = "HiraginoSans-W6"
     case w8 = "HiraginoSans-W8"
 }
 
 // MARK: - Hoefler Text
-enum hoeflerText: String, Font {
+enum hoeflerText: String, FontRepresentable {
     case black = "HoeflerText-Black"
     case blackItalic = "HoeflerText-BlackItalic"
     case italic = "HoeflerText-Italic"
@@ -368,68 +342,68 @@ enum hoeflerText: String, Font {
 }
 
 // MARK: - Kailasa
-enum kailasa: String, Font {
+enum kailasa: String, FontRepresentable {
     case regular = "Kailasa"
     case bold = "Kailasa-Bold"
 }
 
 // MARK: - Kefa
-enum kefa: String, Font {
+enum kefa: String, FontRepresentable {
     case regular = "Kefa-Regular"
 }
 
 // MARK: - Khmer Sangam MN
-enum khmerSangamMN: String, Font {
+enum khmerSangamMN: String, FontRepresentable {
     case regular = "KhmerSangamMN"
 }
 
 // MARK: - Kohinoor Bangla
-enum kohinoorBangla: String, Font {
+enum kohinoorBangla: String, FontRepresentable {
     case light = "KohinoorBangla-Light"
     case regular = "KohinoorBangla-Regular"
     case semibold = "KohinoorBangla-Semibold"
 }
 
 // MARK: - Kohinoor Devanagari
-enum kohinoorDevanagari: String, Font {
+enum kohinoorDevanagari: String, FontRepresentable {
     case light = "KohinoorDevanagari-Light"
     case regular = "KohinoorDevanagari-Regular"
     case semibold = "KohinoorDevanagari-Semibold"
 }
 
 // MARK: - Kohinoor Gujarati
-enum kohinoorGujarati: String, Font {
+enum kohinoorGujarati: String, FontRepresentable {
     case bold = "KohinoorGujarati-Bold"
     case light = "KohinoorGujarati-Light"
     case regular = "KohinoorGujarati-Regular"
 }
 
 // MARK: - Kohinoor Telugu
-enum kohinoorTelugu: String, Font {
+enum kohinoorTelugu: String, FontRepresentable {
     case light = "KohinoorTelugu-Light"
     case medium = "KohinoorTelugu-Medium"
     case regular = "KohinoorTelugu-Regular"
 }
 
 // MARK: - Lao Sangam MN
-enum laoSangamMN: String, Font {
+enum laoSangamMN: String, FontRepresentable {
     case regular = "LaoSangamMN"
 }
 
 // MARK: - Malayalam Sangam MN
-enum malayalamSangamMN: String, Font {
+enum malayalamSangamMN: String, FontRepresentable {
     case regular = "MalayalamSangamMN"
     case bold = "MalayalamSangamMN-Bold"
 }
 
 // MARK: - Marker Felt
-enum markerFelt: String, Font {
+enum markerFelt: String, FontRepresentable {
     case thin = "MarkerFelt-Thin"
     case wide = "MarkerFelt-Wide"
 }
 
 // MARK: - Menlo
-enum menlo: String, Font {
+enum menlo: String, FontRepresentable {
     case bold = "Menlo-Bold"
     case boldItalic = "Menlo-BoldItalic"
     case italic = "Menlo-Italic"
@@ -437,64 +411,64 @@ enum menlo: String, Font {
 }
 
 // MARK: - Mishafi
-enum mishafi: String, Font {
+enum mishafi: String, FontRepresentable {
     case regular = "DiwanMishafi"
 }
 
 // MARK: - Mukta Mahee
-enum muktaMahee: String, Font {
+enum muktaMahee: String, FontRepresentable {
     case bold = "MuktaMahee-Bold"
     case light = "MuktaMahee-Light"
     case regular = "MuktaMahee-Regular"
 }
 
 // MARK: - Myanmar Sangam MN
-enum myanmarSangamMN: String, Font {
+enum myanmarSangamMN: String, FontRepresentable {
     case regular = "MyanmarSangamMN"
     case bold = "MyanmarSangamMN-Bold"
 }
 
 // MARK: - Noteworthy
-enum noteworthy: String, Font {
+enum noteworthy: String, FontRepresentable {
     case bold = "Noteworthy-Bold"
     case light = "Noteworthy-Light"
 }
 
 // MARK: - Noto Nastaliq Urdu
-enum notoNastaliqUrdu: String, Font {
+enum notoNastaliqUrdu: String, FontRepresentable {
     case regular = "NotoNastaliqUrdu"
     case bold = "NotoNastaliqUrdu-Bold"
 }
 
 // MARK: - Noto Sans Kannada
-enum notoSansKannada: String, Font {
+enum notoSansKannada: String, FontRepresentable {
     case bold = "NotoSansKannada-Bold"
     case light = "NotoSansKannada-Light"
     case regular = "NotoSansKannada-Regular"
 }
 
 // MARK: - Noto Sans Myanmar
-enum notoSansMyanmar: String, Font {
+enum notoSansMyanmar: String, FontRepresentable {
     case bold = "NotoSansMyanmar-Bold"
     case light = "NotoSansMyanmar-Light"
     case regular = "NotoSansMyanmar-Regular"
 }
 
 // MARK: - Noto Sans Oriya
-enum notoSansOriya: String, Font {
+enum notoSansOriya: String, FontRepresentable {
     case regular = "NotoSansOriya"
     case bold = "NotoSansOriya-Bold"
 }
 
 // MARK: - Noto Sans Zawgyi
-enum notoSansZawgyi: String, Font {
+enum notoSansZawgyi: String, FontRepresentable {
     case bold = "NotoSansZawgyi-Bold"
     case light = "NotoSansZawgyi-Light"
     case regular = "NotoSansZawgyi-Regular"
 }
 
 // MARK: - Optima
-enum optima: String, Font {
+enum optima: String, FontRepresentable {
     case bold = "Optima-Bold"
     case boldItalic = "Optima-BoldItalic"
     case extraBlack = "Optima-ExtraBlack"
@@ -503,7 +477,7 @@ enum optima: String, Font {
 }
 
 // MARK: - Palatino
-enum palatino: String, Font {
+enum palatino: String, FontRepresentable {
     case bold = "Palatino-Bold"
     case boldItalic = "Palatino-BoldItalic"
     case italic = "Palatino-Italic"
@@ -511,18 +485,18 @@ enum palatino: String, Font {
 }
 
 // MARK: - Papyrus
-enum papyrus: String, Font {
+enum papyrus: String, FontRepresentable {
     case regular = "Papyrus"
     case condensed = "Papyrus-Condensed"
 }
 
 // MARK: - Party LET
-enum partyLET: String, Font {
+enum partyLET: String, FontRepresentable {
     case regular = "PartyLetPlain"
 }
 
 // MARK: - PingFang HK
-enum pingFangHK: String, Font {
+enum pingFangHK: String, FontRepresentable {
     case light = "PingFangHK-Light"
     case medium = "PingFangHK-Medium"
     case regular = "PingFangHK-Regular"
@@ -532,7 +506,7 @@ enum pingFangHK: String, Font {
 }
 
 // MARK: - PingFang SC
-enum pingFangSC: String, Font {
+enum pingFangSC: String, FontRepresentable {
     case light = "PingFangSC-Light"
     case medium = "PingFangSC-Medium"
     case regular = "PingFangSC-Regular"
@@ -542,7 +516,7 @@ enum pingFangSC: String, Font {
 }
 
 // MARK: - PingFang TC
-enum pingFangTC: String, Font {
+enum pingFangTC: String, FontRepresentable {
     case light = "PingFangTC-Light"
     case medium = "PingFangTC-Medium"
     case regular = "PingFangTC-Regular"
@@ -552,7 +526,7 @@ enum pingFangTC: String, Font {
 }
 
 // MARK: - Rockwell
-enum rockwell: String, Font {
+enum rockwell: String, FontRepresentable {
     case bold = "Rockwell-Bold"
     case boldItalic = "Rockwell-BoldItalic"
     case italic = "Rockwell-Italic"
@@ -560,48 +534,43 @@ enum rockwell: String, Font {
 }
 
 // MARK: - Savoye LET
-enum savoyeLET: String, Font {
+enum savoyeLET: String, FontRepresentable {
     case regular = "SavoyeLetPlain"
 }
 
 // MARK: - Sinhala Sangam MN
-enum sinhalaSangamMN: String, Font {
+enum sinhalaSangamMN: String, FontRepresentable {
     case regular = "SinhalaSangamMN"
     case bold = "SinhalaSangamMN-Bold"
 }
 
 // MARK: - Snell Roundhand
-enum snellRoundhand: String, Font {
+enum snellRoundhand: String, FontRepresentable {
     case regular = "SnellRoundhand"
     case black = "SnellRoundhand-Black"
     case bold = "SnellRoundhand-Bold"
 }
 
 // MARK: - Symbol
-enum symbol: String, Font {
+enum symbol: String, FontRepresentable {
     case regular = "Symbol"
 }
 
 // MARK: - Tamil Sangam MN
-enum tamilSangamMN: String, Font {
+enum tamilSangamMN: String, FontRepresentable {
     case regular = "TamilSangamMN"
     case bold = "TamilSangamMN-Bold"
 }
 
-// MARK: - Telugu Sangam MN
-enum teluguSangamMN: String, Font {
-    
-}
-
 // MARK: - Thonburi
-enum thonburi: String, Font {
+enum thonburi: String, FontRepresentable {
     case regular = "Thonburi"
     case bold = "Thonburi-Bold"
     case light = "Thonburi-Light"
 }
 
 // MARK: - Times New Roman
-enum timesNewRoman: String, Font {
+enum timesNewRoman: String, FontRepresentable {
     case boldItalicMT = "TimesNewRomanPS-BoldItalicMT"
     case boldMT = "TimesNewRomanPS-BoldMT"
     case italicMT = "TimesNewRomanPS-ItalicMT"
@@ -609,7 +578,7 @@ enum timesNewRoman: String, Font {
 }
 
 // MARK: - Trebuchet MS
-enum trebuchetMS: String, Font {
+enum trebuchetMS: String, FontRepresentable {
     case boldItalic = "Trebuchet-BoldItalic"
     case regular = "TrebuchetMS"
     case bold = "TrebuchetMS-Bold"
@@ -617,7 +586,7 @@ enum trebuchetMS: String, Font {
 }
 
 // MARK: - Verdana
-enum verdana: String, Font {
+enum verdana: String, FontRepresentable {
     case regular = "Verdana"
     case bold = "Verdana-Bold"
     case boldItalic = "Verdana-BoldItalic"
@@ -625,11 +594,11 @@ enum verdana: String, Font {
 }
 
 // MARK: - Zapf Dingbats
-enum zapfDingbats: String, Font {
+enum zapfDingbats: String, FontRepresentable {
     case regular = "ZapfDingbatsITC"
 }
 
 // MARK: - Zapfino
-enum zapfino: String, Font {
+enum zapfino: String, FontRepresentable {
     case regular = "Zapfino"
 }
