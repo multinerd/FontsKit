@@ -12,6 +12,9 @@
 		033EB977193EA367006704FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033EB975193EA367006704FA /* Main.storyboard */; };
 		033EB979193EA367006704FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 033EB978193EA367006704FA /* Images.xcassets */; };
 		033EB985193EA367006704FA /* SwiftFontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EB984193EA367006704FA /* SwiftFontsTests.swift */; };
+		3B3FD15A22CE7CC9000F0023 /* Default Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15722CE7CC9000F0023 /* Default Sizes.swift */; };
+		3B3FD15C22CE7CC9000F0023 /* FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15922CE7CC9000F0023 /* FontRepresentable.swift */; };
+		3B3FD15F22CE7D91000F0023 /* iOSGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15E22CE7D91000F0023 /* iOSGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 		033EB97E193EA367006704FA /* SwiftFontsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFontsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		033EB983193EA367006704FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033EB984193EA367006704FA /* SwiftFontsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFontsTests.swift; sourceTree = "<group>"; };
+		3B3FD15722CE7CC9000F0023 /* Default Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Default Sizes.swift"; sourceTree = "<group>"; };
+		3B3FD15822CE7CC9000F0023 /* iOSGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSGenerated.swift; sourceTree = "<group>"; };
+		3B3FD15922CE7CC9000F0023 /* FontRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRepresentable.swift; sourceTree = "<group>"; };
+		3B3FD15E22CE7D91000F0023 /* iOSGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,7 @@
 		033EB96E193EA367006704FA /* SwiftFonts */ = {
 			isa = PBXGroup;
 			children = (
+				3B3FD15622CE7CBD000F0023 /* Sources */,
 				033EB971193EA367006704FA /* AppDelegate.swift */,
 				033EB973193EA367006704FA /* ViewController.swift */,
 				033EB975193EA367006704FA /* Main.storyboard */,
@@ -107,6 +115,25 @@
 				033EB983193EA367006704FA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B3FD15522CE7C96000F0023 /* CodeGen */ = {
+			isa = PBXGroup;
+			children = (
+				3B3FD15E22CE7D91000F0023 /* iOSGenerator.swift */,
+				3B3FD15822CE7CC9000F0023 /* iOSGenerated.swift */,
+			);
+			path = CodeGen;
+			sourceTree = "<group>";
+		};
+		3B3FD15622CE7CBD000F0023 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3B3FD15722CE7CC9000F0023 /* Default Sizes.swift */,
+				3B3FD15922CE7CC9000F0023 /* FontRepresentable.swift */,
+				3B3FD15522CE7C96000F0023 /* CodeGen */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,11 +180,12 @@
 		033EB964193EA367006704FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Roadfire Software";
 				TargetAttributes = {
 					033EB96B193EA367006704FA = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 76AP3T3TSD;
 					};
 					033EB97D193EA367006704FA = {
 						CreatedOnToolsVersion = 6.0;
@@ -167,7 +195,7 @@
 			};
 			buildConfigurationList = 033EB967193EA367006704FA /* Build configuration list for PBXProject "SwiftFonts" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -208,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3FD15A22CE7CC9000F0023 /* Default Sizes.swift in Sources */,
 				033EB974193EA367006704FA /* ViewController.swift in Sources */,
+				3B3FD15F22CE7D91000F0023 /* iOSGenerator.swift in Sources */,
 				033EB972193EA367006704FA /* AppDelegate.swift in Sources */,
+				3B3FD15C22CE7CC9000F0023 /* FontRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,20 +282,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -293,13 +336,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -307,6 +360,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -316,6 +370,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -324,10 +379,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 76AP3T3TSD;
 				INFOPLIST_FILE = SwiftFonts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -335,10 +394,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 76AP3T3TSD;
 				INFOPLIST_FILE = SwiftFonts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -357,6 +420,7 @@
 				INFOPLIST_FILE = SwiftFontsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roadfiresoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -373,6 +437,7 @@
 				INFOPLIST_FILE = SwiftFontsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roadfiresoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -397,6 +462,7 @@
 				033EB98A193EA367006704FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		033EB98B193EA367006704FA /* Build configuration list for PBXNativeTarget "SwiftFontsTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +471,7 @@
 				033EB98D193EA367006704FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
