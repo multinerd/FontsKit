@@ -23,7 +23,8 @@ import UIKit
  
  - Parameter filter: Used to narrow the log to your desired fonts. Case is ignored. Defaults to empty string.
  */
-public func logBoilerplate(forFontsWithFamilyNamesContaining filter: String = "") {
+public func logBoilerplate(forFontsWithFamilyNamesContaining filter: String = "") -> String {
+    var finalStr = ""
     let trimmedFilter = filter.trimmingCharacters(in: .whitespaces).lowercased()
     UIFont.familyNames.sorted()
         .filter { !UIFont.fontNames(forFamilyName: $0).isEmpty }
@@ -33,12 +34,13 @@ public func logBoilerplate(forFontsWithFamilyNamesContaining filter: String = ""
             str += "\nenum \(normalizeFontName(familyName)): String, FontRepresentable {\n"
             str += UIFont.fontNames(forFamilyName: familyName)
                 .sorted()
-                .map { "\tcase \(normalizedFaceName($0)) = \"\($0)\"" }
+                .map { "    case \(normalizedFaceName($0)) = \"\($0)\"" }
                 .joined(separator: "\n")
             
-            str += "\n}"
-            print(str)
+            str += "\n}\n"
+            finalStr += str
     }
+    return finalStr
 }
 
 
@@ -53,6 +55,7 @@ func normalizeFontName(_ fontName: String) -> String {
 
 func normalizedFaceName(_ fontName: String) -> String {
     
+    var fontName = fontName
     let components = fontName.components(separatedBy: "-")
     
     if components.count > 1
@@ -67,7 +70,7 @@ func normalizedFaceName(_ fontName: String) -> String {
         var displayString = ""
         var isCollecting = false
         
-        for char in fontName
+        for char in fontNameLowercaseStart
         {
             guard !isCollecting else {
                 displayString += String(char)
@@ -80,6 +83,12 @@ func normalizedFaceName(_ fontName: String) -> String {
                 isCollecting = true
             }
         }
+        
+//        let fontsWithNoNoDashes = ["damascus"]
+//        if fontsWithNoNoDashes.contains(displayString) {
+//            fontName = fontName.remove(prefix: "Damascus")
+//            displayString = displayString.remove(prefix: "damascus")
+//        }
         
         return displayString.isEmpty || fontName.lowercased() == displayString.lowercased()
             ? "regular"
@@ -100,5 +109,9 @@ extension String {
     }
     var lowercaseFirst: String {
         return first.lowercased() + String(dropFirst())
+    }
+    func remove(prefix: String) -> String {
+        guard hasPrefix(prefix) else { return self }
+        return String(dropFirst(prefix.count))
     }
 }
