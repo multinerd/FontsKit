@@ -1,7 +1,7 @@
 import XCTest
 import SwiftFonts
 
-class SwiftFontsTests: XCTestCase {
+class PreinstalledFontsTests: XCTestCase {
 
 	let generator = PreinstalledFontsCodeGenerator.shared
 
