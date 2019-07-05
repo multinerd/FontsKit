@@ -2,72 +2,24 @@ import Foundation
 import UIKit
 
 /// Preinstalled  iOS font code generator
-public class PreinstalledFontsCodeGenerator {
+internal class PreinstalledFontsCodeGenerator: CodeGenerator {
 
     public static let shared = PreinstalledFontsCodeGenerator()
-
-    /// Outputs code to debugger output.
-    public func generateCodeToDebugger() {
-
-        _generateiOSFontsCode().individual.sorted { $0.key < $1.key }.forEach {
-            print($0.value + "\n")
-        }
+    
+    /// Get a list of installed font family names
+    public func listOfFamilyNames() -> [String] {
+        return UIFont.familyNames
+    }
+    
+    /// Get a list of installed font  names
+    public func listOfFontNames() -> [String] {
+        return listOfFamilyNames().flatMap{UIFont.fontNames(forFamilyName: $0)}
     }
 
-    /// Output individual files to a specidied directory path.
-    /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
-    /// - Parameter directoryPath: The output directory path.
-    public func generateCode(named: String? = nil, directoryPath: String) {
-
-        _generateiOSFontsCode(named).individual.forEach {
-            do {
-                let folderPath = "\(directoryPath)\($0.key)"
-                try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: true, attributes: [:])
-
-                let filePath = "\(folderPath)/\($0.key).swift"
-                FileManager.default.createFile(atPath: filePath, contents: nil, attributes: [:])
-
-                try $0.value.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
-            } catch let error as NSError {
-                print(error.userInfo)
-            }
-        }
-        print("Code output to \(directoryPath)")
-    }
-
-    /// Output a single file containing all the fonts.
-    /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
-    /// - Parameter filePath: The output file path.
-    public func generateCode(named: String? = nil, filePath: String) {
-
-        do {
-            try _generateiOSFontsCode(named).full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            print(error.userInfo)
-        }
-        print("Code output to \(filePath)")
-    }
-
-    // MARK: - Caching
-
-    private var _cached: GeneratedCodeAlias? = nil
-
-    private func setCache(_ cache: GeneratedCodeAlias) -> GeneratedCodeAlias {
-
-        _cached = cache
-        return _cached!
-    }
-
-    public func clearCache() {
-
-        _cached = nil
-    }
 
     // MARK: - Private
 
-    private typealias GeneratedCodeAlias = (full: String, individual: [String: String])
-
-    private func _generateiOSFontsCode(_ named: String? = nil) -> GeneratedCodeAlias {
+    internal override func _generateCodeOutput(_ named: String? = nil) -> GeneratedCodeOutput {
 
         if let cached = _cached {
             return cached
@@ -111,24 +63,9 @@ public class PreinstalledFontsCodeGenerator {
 
         return setCache((allCode, individualCodes))
     }
-
-    private func _normalize(fontName: String) -> String {
-
-        return fontName.replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "_", with: "").replacingOccurrences(of: " ", with: "")
-        //            .lowercaseFirst
-    }
-
-    /// Some fonts give off unexpected behaviours, we must handle accordingly
-    func handleProblemFonts(faceName: String) -> String? {
-
-        if faceName.contains("Damascus") {
-            return faceName.replacingOccurrences(of: "Damascus", with: "")
-        }
-
-        return nil
-    }
-
-    private func _normalized(faceName: String) -> String {
+    
+    /// Override to handle problem fonts
+    internal override func _normalized(faceName: String) -> String {
 
         let components = faceName.components(separatedBy: "-")
 
@@ -160,37 +97,14 @@ public class PreinstalledFontsCodeGenerator {
             return displayString.isEmpty || faceName.lowercased() == displayString.lowercased() ? "regular" : displayString.lowercaseFirst
         }
     }
-}
-
-extension String {
-
-    var first: String {
-        return String(prefix(1))
-    }
-
-    var last: String {
-        return String(suffix(1))
-    }
-
-    var uppercaseFirst: String {
-        return first.uppercased() + String(dropFirst())
-    }
-
-    var lowercaseFirst: String {
-        return first.lowercased() + String(dropFirst())
-    }
-
-    var trimmed: String {
-        return self.trimmingCharacters(in: .whitespaces)
-    }
-
-    func remove(prefix: String) -> String {
-
-        guard hasPrefix(prefix) else { return self }
-        return String(dropFirst(prefix.count))
+    
+    /// Some fonts give off unexpected behaviours, we must handle accordingly
+    private func handleProblemFonts(faceName: String) -> String? {
+        
+        if faceName.contains("Damascus") {
+            return faceName.replacingOccurrences(of: "Damascus", with: "")
+        }
+        
+        return nil
     }
 }
-
-
-
-
