@@ -215,10 +215,10 @@ enum dINCondensed: String, FontRepresentable {
 // MARK: - Damascus
 enum damascus: String, FontRepresentable {
     case regular = "Damascus"
-    case regular = "DamascusBold"
-    case regular = "DamascusLight"
-    case regular = "DamascusMedium"
-    case regular = "DamascusSemiBold"
+    case bold = "DamascusBold"
+    case light = "DamascusLight"
+    case medium = "DamascusMedium"
+    case semiBold = "DamascusSemiBold"
 }
 
 // MARK: - Devanagari Sangam MN
