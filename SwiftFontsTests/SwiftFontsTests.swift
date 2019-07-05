@@ -20,13 +20,13 @@ class SwiftFontsTests: XCTestCase {
 	/// Generate all fonts to file
 	func test_full_all() {
 
-		generator.generateCode(filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSGenerated.swift")
+		generator.generateCode(filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
 	}
 
 	/// Generate some font to file
 	func test_full_some() {
 
-		generator.generateCode(named: fontName, filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSGenerated.swift")
+		generator.generateCode(named: fontName, filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
 	}
 
 	// MARK: - Individual
