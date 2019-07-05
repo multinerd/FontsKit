@@ -96,7 +96,7 @@ public class iOSGenerator {
             let individualFamily = """
             
             // MARK: - \(familyName)
-            enum \(_normalize(fontName: familyName)): String, FontRepresentable {
+            public enum \(_normalize(fontName: familyName)): String, FontRepresentable {
             \(fontNamesEnum)
             }
             
