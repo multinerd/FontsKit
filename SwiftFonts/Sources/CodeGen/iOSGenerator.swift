@@ -1,47 +1,74 @@
-//
-//  iOSGenerator.swift
-//  SwiftFonts
-//
-//  Created by Michael Hedaitulla on 7/4/19.
-//  Copyright © 2019 Roadfire Software. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-public struct iOSGenerator {
+/// Native iOS font code generator
+public class iOSGenerator {
     
+    public static let shared = iOSGenerator()
     
     /// Outputs code to debugger output.
-    public static func generateCodeToDebugger() {
+    public func generateCodeToDebugger() {
         _generateiOSFontsCode().individual.sorted { $0.key < $1.key }.forEach {
             print($0.value + "\n")
         }
     }
     
-    
-    public static func generateCode(directoryPath: String) {
-        _generateiOSFontsCode().individual.forEach {
+    /// Output individual files to a specidied directory path.
+    /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
+    /// - Parameter directoryPath: The output directory path.
+    public func generateCode(named: String? = nil, directoryPath: String) {
+        _generateiOSFontsCode(named).individual.forEach {
             do {
-                try $0.value.write(toFile: (directoryPath+$0.key), atomically: false, encoding: String.Encoding.utf8)
+                let folderPath = "\(directoryPath)\($0.key)"
+                try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: true, attributes: [:])
+                
+                let filePath = "\(folderPath)/\($0.key).swift"
+                FileManager.default.createFile(atPath: filePath, contents: nil, attributes: [:])
+                
+                try $0.value.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
             } catch let error as NSError {
                 print(error.userInfo)
             }
         }
+        print("Code output to \(directoryPath)")
     }
     
-    public static func generateCode(filePath: String) {
+    /// Output a single file containing all the fonts.
+    /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
+    /// - Parameter filePath: The output file path.
+    public func generateCode(named: String? = nil, filePath: String) {
         do {
-            try _generateiOSFontsCode().full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
+            try _generateiOSFontsCode(named).full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
         } catch let error as NSError {
             print(error.userInfo)
         }
+        print("Code output to \(filePath)")
     }
     
     
+    // MARK: - Caching
+    
+    private var _cached: GeneratedCodeAlias? = nil
+    
+    private func setCache(cache: GeneratedCodeAlias) -> GeneratedCodeAlias {
+        _cached = cache
+        return _cached!
+    }
+    
+    public func clearCache() {
+        _cached = nil
+    }
+    
+    
+    // MARK: - Private
     
     private typealias GeneratedCodeAlias = (full: String, individual: [String:String])
-    private static func _generateiOSFontsCode(named: String = "") -> GeneratedCodeAlias {
+    
+    private func _generateiOSFontsCode(_ named: String? = nil) -> GeneratedCodeAlias {
+        
+        if let cached = _cached {
+            return cached
+        }
         
         let familyNames = UIFont.familyNames
         var sortedFamilyNames = familyNames.sorted()
@@ -51,8 +78,7 @@ public struct iOSGenerator {
             .filter { !UIFont.fontNames(forFamilyName: $0).isEmpty }
         
         // check if were only generating code for a specific font
-        let trimmedName = named.trimmed
-        if !trimmedName.isEmpty {
+        if let trimmedName = named?.trimmed, !trimmedName.isEmpty {
             let lowercasedTrimmedName = trimmedName.lowercased()
             sortedFamilyNames = sortedFamilyNames
                 .filter { $0.lowercased().contains(lowercasedTrimmedName) }
@@ -68,22 +94,23 @@ public struct iOSGenerator {
             let fontNamesEnum = fontNameEnum.joined(separator: "\n")
             
             let individualFamily = """
+            
             // MARK: - \(familyName)
             enum \(_normalize(fontName: familyName)): String, FontRepresentable {
             \(fontNamesEnum)
             }
+            
             """
             
             allCode += individualFamily
             individualCodes[familyName] = individualFamily
         }
         
-        return (allCode, individualCodes)
+        
+        return setCache(cache: (allCode, individualCodes))
     }
     
-    
-    
-    static func _normalize(fontName: String) -> String {
+    private func _normalize(fontName: String) -> String {
         return fontName
             .replacingOccurrences(of: "-", with: "")
             .replacingOccurrences(of: "_", with: "")
@@ -91,16 +118,31 @@ public struct iOSGenerator {
             .lowercaseFirst
     }
     
-    static func _normalized(faceName: String) -> String {
+    
+    
+    /// Some fonts give off unexpected behaviours, we must handle accordingly
+    func handleProblemFonts(faceName: String) -> String?  {
+        if faceName.contains("Damascus") {
+            return faceName.replacingOccurrences(of: "Damascus", with: "")
+        }
         
+        return nil
+    }
+    
+    private func _normalized(faceName: String) -> String {
+
         let components = faceName.components(separatedBy: "-")
         
         if components.count > 1 {
             return _normalize(fontName: components[1])
         }
         else {
+            
+            // Handle problem fonts
+            let newFaceName = handleProblemFonts(faceName: faceName) ?? faceName
+            
             // Let's see if we can determine the type based on capitalization
-            let fontNameLowercaseStart = faceName.lowercaseFirst
+            let fontNameLowercaseStart = newFaceName.lowercaseFirst
             
             var displayString = ""
             var isCollecting = false
@@ -117,11 +159,7 @@ public struct iOSGenerator {
                 }
             }
             
-//            let fontsWithNoNoDashes = ["damascus"]
-//            if fontsWithNoNoDashes.contains(displayString) {
-//                fontName = fontName.remove(prefix: "Damascus")
-//                displayString = displayString.remove(prefix: "damascus")
-//            }
+
             
             return displayString.isEmpty || faceName.lowercased() == displayString.lowercased()
                 ? "regular"
@@ -129,22 +167,26 @@ public struct iOSGenerator {
         }
     }
     
-    
 }
 
 extension String {
+    
     var first: String {
         return String(prefix(1))
     }
+    
     var last: String {
         return String(suffix(1))
     }
+    
     var uppercaseFirst: String {
         return first.uppercased() + String(dropFirst())
     }
+    
     var lowercaseFirst: String {
         return first.lowercased() + String(dropFirst())
     }
+    
     var trimmed: String {
         return self.trimmingCharacters(in: .whitespaces)
     }
@@ -154,6 +196,7 @@ extension String {
         return String(dropFirst(prefix.count))
     }
 }
+
 
 
 
