@@ -1,10 +1,10 @@
 import Foundation
 import UIKit
 
-/// Native iOS font code generator
-public class iOSGenerator {
+/// Preinstalled  iOS font code generator
+public class PreinstalledFontsCodeGenerator {
 
-    public static let shared = iOSGenerator()
+    public static let shared = PreinstalledFontsCodeGenerator()
 
     /// Outputs code to debugger output.
     public func generateCodeToDebugger() {

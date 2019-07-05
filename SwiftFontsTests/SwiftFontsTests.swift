@@ -3,7 +3,7 @@ import SwiftFonts
 
 class SwiftFontsTests: XCTestCase {
 
-	let generator = iOSGenerator.shared
+	let generator = PreinstalledFontsCodeGenerator.shared
 
 	let fontName = "Typewriter"
 
