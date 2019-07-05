@@ -16,22 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
-        
-
-        saveFile(content: logBoilerplate(),
-                 filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSGenerated.swift")
-        
         return true
     }
 
-    func saveFile(content: String, filePath: String) {
-        do {
-            try content.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            print(error.userInfo)
-        }
-    }
-    
+
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
