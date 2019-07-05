@@ -1,21 +1,14 @@
-//
-//  FontRepresentable.swift
-//  Pods-Mia-Fonts-CodeGen
-//
-//  Created by Michael Hedaitulla on 7/4/19.
-//
-
 import Foundation
 import UIKit
 
 /// A type that represents a font and can generate a `UIFont` object.
 public protocol FontRepresentable: RawRepresentable where Self.RawValue == String {
     func of(size: CGFloat) -> UIFont
-    
+
     @available(iOS 11.0, *)
     func of(textStyle: UIFont.TextStyle, defaultSize: CGFloat?, maxSize: CGFloat?) -> UIFont
-    
-    @available(iOS, introduced: 8.2, deprecated: 11.0, message: "Use `of(textStyle:maxSize:defaultSize:)` instead")
+
+    @available(iOS, introduced: 8.2, deprecated: 11.0, message: "Use `of(textStyle:maxSize:defaultSize:)` instead") 
     func of(style: UIFont.TextStyle, maxSize: CGFloat?) -> UIFont
 }
 
@@ -31,15 +24,16 @@ public extension FontRepresentable {
     ///
     /// - Parameter size: The text size for the font.
     func of(size: CGFloat) -> UIFont {
+
         guard let font = UIFont(name: rawValue, size: size) else {
             // If font not found, crash debug builds.
             assertionFailure("Font not found: \(rawValue)")
             return .systemFont(ofSize: size)
         }
-        
+
         return font
     }
-    
+
     /// Creates a dynamic font object corresponding to the given parameters.
     ///
     /// # ⚠️ Important Notes: #
@@ -53,29 +47,30 @@ public extension FontRepresentable {
     /// - Parameter maxSize: The size which the text may not exceed.
     @available(iOS 11.0, *)
     func of(textStyle: UIFont.TextStyle, defaultSize: CGFloat? = nil, maxSize: CGFloat? = nil) -> UIFont {
+
         // If no default size provided, use the default specified in Apple's HIG
         guard let defaultSize = defaultSize ?? defaultSizes[textStyle] else {
             assertionFailure("""
-                Text style \(textStyle.rawValue) is not accounted for in Swash's
-                default size dictionary 🤭. Either Apple's HIG has not specified a
-                default size for \(textStyle.rawValue) for the device you are using,
-                or it was recently added and this library needs to be updated (GitHub
-                issues and pull requests are much appreciated!). In any case, at
-                least for now, you must provide a default size to use this text style.
-                """)
+                             Text style \(textStyle.rawValue) is not accounted for in Swash's
+                             default size dictionary 🤭. Either Apple's HIG has not specified a
+                             default size for \(textStyle.rawValue) for the device you are using,
+                             or it was recently added and this library needs to be updated (GitHub
+                             issues and pull requests are much appreciated!). In any case, at
+                             least for now, you must provide a default size to use this text style.
+                             """)
             return of(size: 17)
         }
-        
+
         let font = of(size: defaultSize)
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
-        
+
         if let maxSize = maxSize {
             return fontMetrics.scaledFont(for: font, maximumPointSize: maxSize)
         } else {
             return fontMetrics.scaledFont(for: font)
         }
     }
-    
+
     /// Creates a font object sized based on the given parameters.
     ///
     /// # ⚠️ Important Notes: #
@@ -84,15 +79,15 @@ public extension FontRepresentable {
     ///
     /// - Parameter style: The text style used to scale the text.
     /// - Parameter maxSize: Size which the text may not exceed.
-    @available(iOS, introduced: 8.2, deprecated: 11.0, message: "Use `of(textStyle:maxSize:defaultSize:)` instead")
+    @available(iOS, introduced: 8.2, deprecated: 11.0, message: "Use `of(textStyle:maxSize:defaultSize:)` instead") 
     func of(style: UIFont.TextStyle, maxSize: CGFloat? = nil) -> UIFont {
+
         let pointSize = UIFont.preferredFont(forTextStyle: style).pointSize
-        
+
         if let maxSize = maxSize, pointSize > maxSize {
             return of(size: maxSize)
         } else {
             return of(size: pointSize)
         }
     }
-    
 }
