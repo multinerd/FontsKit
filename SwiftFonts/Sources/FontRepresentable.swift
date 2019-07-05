@@ -91,3 +91,15 @@ public extension FontRepresentable {
         }
     }
 }
+
+
+
+/*
+ public func of(size: CGFloat, scaling: Bool) -> UIFont? {
+     let newSize = scaling ? GBRatio * size : size
+     // print("Font Size : " , (UIScreen.main.bounds.size.width * size)/414)
+     // return UIFont(name: rawValue, size: (UIScreen.main.bounds.size.width * size)/414)
+     // return UIFont(name: rawValue, size: GBRatio * size)
+     return UIFont(name: rawValue, size: newSize)
+ }
+ */
