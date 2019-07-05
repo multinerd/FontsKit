@@ -1,6 +1,13 @@
 import XCTest
-import SwiftFonts
+@testable import SwiftFonts
 
 class GoogleFontsTests: XCTestCase {
 
+    let generator = GoogleFontsCodeGenerator.shared
+        
+    func test() {
+        XCTAssertNotNil(generator)
+    }
+    
+    
 }

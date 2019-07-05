@@ -1,10 +1,15 @@
 import XCTest
-import SwiftFonts
+@testable import SwiftFonts
 
 class PreinstalledFontsTests: XCTestCase {
 
 	let generator = PreinstalledFontsCodeGenerator.shared
 
+    func test() {
+        XCTAssertNotNil(generator)
+    }
+    
+    
 	let fontName = "Typewriter"
 
 	// MARK: - Debugger

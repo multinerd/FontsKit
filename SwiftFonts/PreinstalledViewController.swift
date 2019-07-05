@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UITableViewController {
+class PreinstalledViewController: UITableViewController {
 
 	var familyNames: [String] = []
 	var fonts: [String: [String]] = [:]
