@@ -22,6 +22,8 @@
 		3B67E4E222CEF2B9003A4603 /* DownloadableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E122CEF2B9003A4603 /* DownloadableFonts.swift */; };
 		3B67E4E422CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E322CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift */; };
 		3B67E4E622CEF2D4003A4603 /* GoogleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E522CEF2D4003A4603 /* GoogleFonts.swift */; };
+		3B67E4E822CEFD76003A4603 /* DownloadableFontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E722CEFD76003A4603 /* DownloadableFontsTests.swift */; };
+		3B67E4EA22CEFDC5003A4603 /* GoogleFontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E922CEFDC5003A4603 /* GoogleFontsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		3B67E4E122CEF2B9003A4603 /* DownloadableFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableFonts.swift; sourceTree = "<group>"; };
 		3B67E4E322CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFontsCodeGenerator.swift; sourceTree = "<group>"; };
 		3B67E4E522CEF2D4003A4603 /* GoogleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFonts.swift; sourceTree = "<group>"; };
+		3B67E4E722CEFD76003A4603 /* DownloadableFontsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableFontsTests.swift; sourceTree = "<group>"; };
+		3B67E4E922CEFDC5003A4603 /* GoogleFontsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFontsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		033EB981193EA367006704FA /* SwiftFontsTests */ = {
 			isa = PBXGroup;
 			children = (
+				3B67E4E722CEFD76003A4603 /* DownloadableFontsTests.swift */,
+				3B67E4E922CEFDC5003A4603 /* GoogleFontsTests.swift */,
 				033EB984193EA367006704FA /* PreinstalledFontsTests.swift */,
 				033EB982193EA367006704FA /* Supporting Files */,
 			);
@@ -133,8 +139,8 @@
 		3B3FD15522CE7C96000F0023 /* CodeGen */ = {
 			isa = PBXGroup;
 			children = (
-				3B67E4DE22CEF296003A4603 /* GoogleFonts */,
 				3B67E4DD22CEF28D003A4603 /* Downloadable */,
+				3B67E4DE22CEF296003A4603 /* GoogleFonts */,
 				3B67E4DB22CEF278003A4603 /* Preinstalled */,
 			);
 			path = CodeGen;
@@ -298,6 +304,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B67E4E822CEFD76003A4603 /* DownloadableFontsTests.swift in Sources */,
+				3B67E4EA22CEFDC5003A4603 /* GoogleFontsTests.swift in Sources */,
 				033EB985193EA367006704FA /* PreinstalledFontsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
