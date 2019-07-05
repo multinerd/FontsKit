@@ -69,18 +69,8 @@ class CodeGenerator: CodeGen {
     
     // MARK: - Caching
     
-    internal var _cached: GeneratedCodeOutput? = nil
-    
-    internal func setCache(_ cache: GeneratedCodeOutput) -> GeneratedCodeOutput {
-        
-        _cached = cache
-        return _cached!
-    }
-    
-    internal func clearCache() {
-        
-        _cached = nil
-    }
+    internal var _cached: Cached<GeneratedCodeOutput>? = nil
+
     
     
     // MARK: - Helpers
@@ -123,6 +113,22 @@ class CodeGenerator: CodeGen {
         }
     }
     
+}
+
+
+public class Cached<T> {
+    
+    private var _cached: T
+    
+    // Set cache
+    public init(_ cache: T) {
+        _cached = cache
+    }
+
+    // Get cached
+    public var cached: T {
+        return _cached
+    }
 }
 
 extension String {

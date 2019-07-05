@@ -21,7 +21,7 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
 
     internal override func _generateCodeOutput(_ named: String? = nil) -> GeneratedCodeOutput {
 
-        if let cached = _cached {
+        if let cached = _cached?.cached {
             return cached
         }
 
@@ -60,8 +60,9 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
         }
 
         allCode += "}"
-
-        return setCache((allCode, individualCodes))
+        
+        _cached = Cached((allCode, individualCodes))
+        return _cached!.cached
     }
     
     /// Override to handle problem fonts

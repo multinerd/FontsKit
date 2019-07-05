@@ -94,6 +94,7 @@ public extension FontRepresentable {
 
 
 
+
 /*
  public func of(size: CGFloat, scaling: Bool) -> UIFont? {
      let newSize = scaling ? GBRatio * size : size
