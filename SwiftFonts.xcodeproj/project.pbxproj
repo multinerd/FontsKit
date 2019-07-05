@@ -18,6 +18,10 @@
 		3B3FD25B22CEE958000F0023 /* UIFont+FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD25A22CEE958000F0023 /* UIFont+FontRepresentable.swift */; };
 		3B67E4D822CEEBCE003A4603 /* PreinstalledFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15822CE7CC9000F0023 /* PreinstalledFonts.swift */; };
 		3B67E4DA22CEEF1D003A4603 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4D922CEEF1D003A4603 /* Fonts.swift */; };
+		3B67E4E022CEF2AE003A4603 /* DownloadableFontsCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4DF22CEF2AE003A4603 /* DownloadableFontsCodeGenerator.swift */; };
+		3B67E4E222CEF2B9003A4603 /* DownloadableFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E122CEF2B9003A4603 /* DownloadableFonts.swift */; };
+		3B67E4E422CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E322CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift */; };
+		3B67E4E622CEF2D4003A4603 /* GoogleFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67E4E522CEF2D4003A4603 /* GoogleFonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		3B3FD15E22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreinstalledFontsCodeGenerator.swift; sourceTree = "<group>"; };
 		3B3FD25A22CEE958000F0023 /* UIFont+FontRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+FontRepresentable.swift"; sourceTree = "<group>"; };
 		3B67E4D922CEEF1D003A4603 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		3B67E4DF22CEF2AE003A4603 /* DownloadableFontsCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableFontsCodeGenerator.swift; sourceTree = "<group>"; };
+		3B67E4E122CEF2B9003A4603 /* DownloadableFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableFonts.swift; sourceTree = "<group>"; };
+		3B67E4E322CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFontsCodeGenerator.swift; sourceTree = "<group>"; };
+		3B67E4E522CEF2D4003A4603 /* GoogleFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +133,9 @@
 		3B3FD15522CE7C96000F0023 /* CodeGen */ = {
 			isa = PBXGroup;
 			children = (
-				3B3FD15E22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift */,
-				3B3FD15822CE7CC9000F0023 /* PreinstalledFonts.swift */,
+				3B67E4DE22CEF296003A4603 /* GoogleFonts */,
+				3B67E4DD22CEF28D003A4603 /* Downloadable */,
+				3B67E4DB22CEF278003A4603 /* Preinstalled */,
 			);
 			path = CodeGen;
 			sourceTree = "<group>";
@@ -141,6 +150,33 @@
 				3B3FD15522CE7C96000F0023 /* CodeGen */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		3B67E4DB22CEF278003A4603 /* Preinstalled */ = {
+			isa = PBXGroup;
+			children = (
+				3B3FD15E22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift */,
+				3B3FD15822CE7CC9000F0023 /* PreinstalledFonts.swift */,
+			);
+			name = Preinstalled;
+			sourceTree = "<group>";
+		};
+		3B67E4DD22CEF28D003A4603 /* Downloadable */ = {
+			isa = PBXGroup;
+			children = (
+				3B67E4DF22CEF2AE003A4603 /* DownloadableFontsCodeGenerator.swift */,
+				3B67E4E122CEF2B9003A4603 /* DownloadableFonts.swift */,
+			);
+			name = Downloadable;
+			sourceTree = "<group>";
+		};
+		3B67E4DE22CEF296003A4603 /* GoogleFonts */ = {
+			isa = PBXGroup;
+			children = (
+				3B67E4E322CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift */,
+				3B67E4E522CEF2D4003A4603 /* GoogleFonts.swift */,
+			);
+			name = GoogleFonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +281,10 @@
 			files = (
 				3B67E4DA22CEEF1D003A4603 /* Fonts.swift in Sources */,
 				3B3FD15A22CE7CC9000F0023 /* DefaultSizes.swift in Sources */,
+				3B67E4E222CEF2B9003A4603 /* DownloadableFonts.swift in Sources */,
+				3B67E4E622CEF2D4003A4603 /* GoogleFonts.swift in Sources */,
+				3B67E4E422CEF2CD003A4603 /* GoogleFontsCodeGenerator.swift in Sources */,
+				3B67E4E022CEF2AE003A4603 /* DownloadableFontsCodeGenerator.swift in Sources */,
 				033EB974193EA367006704FA /* ViewController.swift in Sources */,
 				3B3FD15F22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift in Sources */,
 				033EB972193EA367006704FA /* AppDelegate.swift in Sources */,
