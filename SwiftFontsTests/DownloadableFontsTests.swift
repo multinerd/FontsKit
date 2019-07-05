@@ -1,5 +1,5 @@
 import XCTest
 import SwiftFonts
 
-class PreinstalledFontsTests: XCTestCase {
+class DownloadableFontsTests: XCTestCase {
 }
