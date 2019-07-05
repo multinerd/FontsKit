@@ -52,7 +52,7 @@ public class iOSGenerator {
 
     private var _cached: GeneratedCodeAlias? = nil
 
-    private func setCache(cache: GeneratedCodeAlias) -> GeneratedCodeAlias {
+    private func setCache(_ cache: GeneratedCodeAlias) -> GeneratedCodeAlias {
 
         _cached = cache
         return _cached!
@@ -109,7 +109,7 @@ public class iOSGenerator {
 
         allCode += "}"
 
-        return setCache(cache: (allCode, individualCodes))
+        return setCache((allCode, individualCodes))
     }
 
     private func _normalize(fontName: String) -> String {
