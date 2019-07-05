@@ -1,10 +1,3 @@
-//
-//  Default Sizes.swift
-//  Pods-Mia-Fonts-CodeGen
-//
-//  Created by Michael Hedaitulla on 7/4/19.
-//
-
 import Foundation
 import UIKit
 
