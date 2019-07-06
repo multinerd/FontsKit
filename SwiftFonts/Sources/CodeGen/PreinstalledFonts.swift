@@ -1,4 +1,4 @@
-public extension Fonts {
+public extension Fonts.Native {
     // MARK: - Academy Engraved LET
     enum AcademyEngravedLET: String, FontRepresentable {
         case regular = "AcademyEngravedLetPlain"

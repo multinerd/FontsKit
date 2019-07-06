@@ -31,11 +31,13 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
             return cached
         }
 
-        let familyNames = UIFont.familyNames
+        let lookupDict = listOfFontsByFamily()
+
+        let familyNames = lookupDict.keys
         var sortedFamilyNames = familyNames.sorted()
 
         // remove family names with no fonts
-        sortedFamilyNames = sortedFamilyNames.filter { !UIFont.fontNames(forFamilyName: $0).isEmpty }
+        sortedFamilyNames = sortedFamilyNames.filter { !(lookupDict[$0]?.isEmpty ?? false) }
 
         // check if were only generating code for a specific font
         if let trimmedName = named?.trimmed, !trimmedName.isEmpty {
@@ -43,11 +45,12 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
             sortedFamilyNames = sortedFamilyNames.filter { $0.lowercased().contains(lowercasedTrimmedName) }
         }
 
-        var allCode: String = "public extension Fonts {"
+        var allCode: String = "public extension Fonts.Native {"
         var individualCodes: [String: String] = [:]
 
         sortedFamilyNames.forEach { familyName in
-            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            guard let fontNames = lookupDict[familyName] else { return }
+
             let sortedFontNames = fontNames.sorted()
             let fontNameEnum = sortedFontNames.map { "    case \(_normalize(faceName: $0)) = \"\($0)\"" }
             let fontNamesEnum = fontNameEnum.joined(separator: "\n")
