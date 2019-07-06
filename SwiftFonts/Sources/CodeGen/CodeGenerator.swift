@@ -139,14 +139,15 @@ class CodeGenerator: CodeGen {
     /// Some fonts give off unexpected behaviours, we must handle accordingly
     private func handleProblem(faceName: String) -> String? {
         
-        if faceName.contains("Damascus") {
-            return faceName.replacingOccurrences(of: "Damascus", with: "")
-        }
-  
-        if faceName.contains("Al-Khalil") {
-            return faceName.replacingOccurrences(of: "Al-Khalil", with: "")
-        }
+        let problems = [
+            ""
+        ]
         
+        for p in problems {
+            if faceName.starts(with: p) {
+                return faceName.replacingOccurrences(of: p, with: "")
+            }
+        }
         return nil
     }
     
