@@ -95,7 +95,7 @@ class CodeGenerator: CodeGen {
     
     open func _normalize(fontName: String) -> String {
         
-        return fontName
+        return (handleProblem(fontName: fontName) ?? fontName)
             .replacingOccurrences(of: "-", with: "")
             .replacingOccurrences(of: "_", with: "")
             .replacingOccurrences(of: " ", with: "")
@@ -105,13 +105,9 @@ class CodeGenerator: CodeGen {
     open func _normalize(faceName: String) -> String {
         
         let components = faceName.components(separatedBy: "-")
-        
-        if faceName.contains("FZLTZHK") {
-            print(true)
-        }
-        
+
         if components.count > 1 {
-            let newFaceName = handleProblemFontsWithHyphens(faceName: faceName) ?? components[1]
+            let newFaceName = handleProblem(faceName: faceName) ?? components[1]
             return newFaceName.isEmpty ? "regular" : _normalize(fontName: newFaceName).lowercaseFirst
         } else {
             
@@ -147,19 +143,15 @@ class CodeGenerator: CodeGen {
             return faceName.replacingOccurrences(of: "Damascus", with: "")
         }
   
+        if faceName.contains("Al-Khalil") {
+            return faceName.replacingOccurrences(of: "Al-Khalil", with: "")
+        }
+        
         return nil
     }
     
     private func handleProblem(fontName: String) -> String? {
-        
-        if fontName.contains("Al-Khalil") {
-            return fontName.replacingOccurrences(of: "Al-Khalil", with: "")
-        }
-        
-        if fontName.contains("Lantinghei-TC-") {
-            return fontName.replacingOccurrences(of: "Lantinghei-TC-", with: "")
-        }
-        
+
         return nil
     }
     

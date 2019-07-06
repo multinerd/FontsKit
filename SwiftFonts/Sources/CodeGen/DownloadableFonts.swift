@@ -6,8 +6,8 @@ enum AlFirat: String, DownloadableFont {
 
 // MARK: - Al-Khalil
 enum AlKhalil: String, DownloadableFont {
-    case khalil = "Al-Khalil"
-    case khalilBold = "Al-KhalilBold"
+    case regular = "Al-Khalil"
+    case bold = "Al-KhalilBold"
 }
 
 // MARK: - Al-Rafidain
@@ -229,9 +229,9 @@ enum DiwanThuluth: String, DownloadableFont {
 
 // MARK: - FZLTZHK--GBK1-0
 enum FZLTZHKGBK10: String, DownloadableFont {
-    case  = "FZLTTHK--GBK1-0"
-    case  = "FZLTXHK--GBK1-0"
-    case  = "FZLTZHK--GBK1-0"
+    case regular = "FZLTTHK--GBK1-0"
+    case regular = "FZLTXHK--GBK1-0"
+    case regular = "FZLTZHK--GBK1-0"
 }
 
 // MARK: - Farisi
@@ -421,9 +421,9 @@ enum Laimoon: String, DownloadableFont {
 
 // MARK: - Lantinghei-TC-Demibold
 enum LantingheiTCDemibold: String, DownloadableFont {
-    case  = "FZLTTHB--B51-0"
-    case  = "FZLTXHB--B51-0"
-    case  = "FZLTZHB--B51-0"
+    case regular = "FZLTTHB--B51-0"
+    case regular = "FZLTXHB--B51-0"
+    case regular = "FZLTZHB--B51-0"
 }
 
 // MARK: - LaoMN
