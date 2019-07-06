@@ -72,7 +72,7 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
                 fontNamesEnum =  "    case regular = \"\(fontNames[0])\""
             } else {
                 let sortedFontNames = fontNames.sorted()
-                let fontNameEnum = sortedFontNames.map { "    case \(_normalized(faceName: $0)) = \"\($0)\"" }
+                let fontNameEnum = sortedFontNames.map { "    case \(_normalize(fontName: $0)) = \"\($0)\"" }
                 fontNamesEnum = fontNameEnum.joined(separator: "\n")
             }
 

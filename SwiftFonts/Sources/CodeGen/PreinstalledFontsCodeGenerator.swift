@@ -59,7 +59,7 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
         sortedFamilyNames.forEach { familyName in
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             let sortedFontNames = fontNames.sorted()
-            let fontNameEnum = sortedFontNames.map { "    case \(_normalized(faceName: $0)) = \"\($0)\"" }
+            let fontNameEnum = sortedFontNames.map { "    case \(_normalize(faceName: $0)) = \"\($0)\"" }
             let fontNamesEnum = fontNameEnum.joined(separator: "\n")
 
             let individualFamily =  """
@@ -82,7 +82,7 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
     }
     
     /// Override to handle problem fonts
-    internal override func _normalized(faceName: String) -> String {
+    internal override func _normalize(faceName: String) -> String {
 
         let components = faceName.components(separatedBy: "-")
 

@@ -94,7 +94,7 @@ class CodeGenerator: CodeGen {
         // .lowercaseFirst
     }
     
-    open func _normalized(faceName: String) -> String {
+    open func _normalize(faceName: String) -> String {
         
         let components = faceName.components(separatedBy: "-")
         
