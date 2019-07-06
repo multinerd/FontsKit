@@ -21,6 +21,7 @@
 		3B2A7E2022D019A800F7135B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A7E1F22D019A800F7135B /* StringExtensions.swift */; };
 		3B2A7E2222D01A7B00F7135B /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A7E2122D01A7B00F7135B /* Configs.swift */; };
 		3B2A7E2422D01E2D00F7135B /* Fonts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A7E2322D01E2D00F7135B /* Fonts.json */; };
+		3B2A7E2822D0264400F7135B /* IOSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A7E2722D0264400F7135B /* IOSFont.swift */; };
 		3B3FD15A22CE7CC9000F0023 /* DefaultSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15722CE7CC9000F0023 /* DefaultSizes.swift */; };
 		3B3FD15C22CE7CC9000F0023 /* FontRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15922CE7CC9000F0023 /* FontRepresentable.swift */; };
 		3B3FD15F22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FD15E22CE7D91000F0023 /* PreinstalledFontsCodeGenerator.swift */; };
@@ -63,6 +64,7 @@
 		3B2A7E1F22D019A800F7135B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		3B2A7E2122D01A7B00F7135B /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		3B2A7E2322D01E2D00F7135B /* Fonts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Fonts.json; sourceTree = "<group>"; };
+		3B2A7E2722D0264400F7135B /* IOSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSFont.swift; sourceTree = "<group>"; };
 		3B3FD15722CE7CC9000F0023 /* DefaultSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSizes.swift; sourceTree = "<group>"; };
 		3B3FD15822CE7CC9000F0023 /* PreinstalledFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreinstalledFonts.swift; sourceTree = "<group>"; };
 		3B3FD15922CE7CC9000F0023 /* FontRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRepresentable.swift; sourceTree = "<group>"; };
@@ -156,9 +158,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3B2A7E2622D0263C00F7135B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B2A7E2722D0264400F7135B /* IOSFont.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3B3FD15522CE7C96000F0023 /* CodeGen */ = {
 			isa = PBXGroup;
 			children = (
+				3B2A7E2622D0263C00F7135B /* Models */,
 				3B2A7E1422CFEC8700F7135B /* CodeGenerator.swift */,
 				3B2A7E2322D01E2D00F7135B /* Fonts.json */,
 				3B67E4DD22CEF28D003A4603 /* Downloadable */,
@@ -326,6 +337,7 @@
 				033EB972193EA367006704FA /* AppDelegate.swift in Sources */,
 				3B2A7E2022D019A800F7135B /* StringExtensions.swift in Sources */,
 				3B2A7E1122CFEAB700F7135B /* DownloadableViewController.swift in Sources */,
+				3B2A7E2822D0264400F7135B /* IOSFont.swift in Sources */,
 				3B3FD25B22CEE958000F0023 /* UIFont+FontRepresentable.swift in Sources */,
 				3B2A7E1522CFEC8700F7135B /* CodeGenerator.swift in Sources */,
 				3B67E4D822CEEBCE003A4603 /* PreinstalledFonts.swift in Sources */,

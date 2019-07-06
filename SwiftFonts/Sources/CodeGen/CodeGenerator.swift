@@ -1,12 +1,7 @@
-//
-//  CodeGenerator.swift
-//  SwiftFonts
-//
-//  Created by Michael Hedaitulla on 7/5/19.
-//
 
 import Foundation
 
+internal typealias FontListOutput = (downloadable: [IOSFont], installed: [IOSFont])
 internal typealias GeneratedCodeOutput = (full: String, individual: [String: String])
 
 protocol CodeGen {
@@ -95,6 +90,7 @@ class CodeGenerator: CodeGen {
         print("Code output to \(filePath)")
     }
     
+    
     // MARK: - Helpers
     
     open func _normalize(fontName: String) -> String {
@@ -113,8 +109,12 @@ class CodeGenerator: CodeGen {
         if components.count > 1 {
             return _normalize(fontName: components[1]).lowercaseFirst
         } else {
+            
+            // Handle problem fonts
+            let newFaceName = handleProblemFonts(faceName: faceName) ?? faceName
+            
             // Let's see if we can determine the type based on capitalization
-            let fontNameLowercaseStart = faceName.lowercaseFirst
+            let fontNameLowercaseStart = newFaceName.lowercaseFirst
             
             var displayString = ""
             var isCollecting = false
@@ -135,13 +135,18 @@ class CodeGenerator: CodeGen {
         }
     }
     
+    /// Some fonts give off unexpected behaviours, we must handle accordingly
+    private func handleProblemFonts(faceName: String) -> String? {
+        
+        if faceName.contains("Al-Khalil") {
+            return faceName.replacingOccurrences(of: "Al-Khalil", with: "")
+        }
+        
+        if faceName.contains("Damascus") {
+            return faceName.replacingOccurrences(of: "Damascus", with: "")
+        }
+        
+        return nil
+    }
+
 }
-
-
-
-
-
-
-
-
-

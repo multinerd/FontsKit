@@ -2,7 +2,7 @@ import XCTest
 @testable import SwiftFonts
 
 class DownloadableFontsTests: XCTestCase {
-
+    
     let generator = DownloadableFontsCodeGenerator.shared
     
     // MARK: - Generic Tests
@@ -10,7 +10,7 @@ class DownloadableFontsTests: XCTestCase {
     func test() {
         XCTAssertNotNil(generator)
     }
-
+    
     func test_listByFamily() {
         let results = generator.listOfFontsByFamily()
         print(results)
@@ -24,11 +24,11 @@ class DownloadableFontsTests: XCTestCase {
         generator.generateCode(filePath: "\(codeGenDir)/DownloadableFonts.swift")
     }
 
-        
-        
-        
+    
+    
+    
     // MARK: - Testing
-
+    
     func test_downloadableFontsNames() {
         
         let installedFonts = PreinstalledFontsCodeGenerator.shared.listOfFontNames()
@@ -36,7 +36,7 @@ class DownloadableFontsTests: XCTestCase {
         // print("\(installedFonts.count) installed fonts")
         
         // printDivider()
-        let downloadableFonts = generator.listOfFontNames(excludeInstalled: true)
+        let downloadableFonts = UIFont.downloadableFontNames(excludeInstalled: true)
         print(downloadableFonts.sorted().joined(separator: "\n"))
         // print("\(downloadableFonts.count) downloadable fonts")
         
@@ -53,8 +53,9 @@ class DownloadableFontsTests: XCTestCase {
         assert(downloadableFonts.count == notInstalled.count)
         assert(alreadyInstalled.count == 0)
     }
-        
+    
     func printDivider() {
         print("\n------------------------------------\n")
     }
 }
+

@@ -11,6 +11,13 @@ import UIKit
 
 private let UndefinedFontSize = CGFloat(1)
 
+public let FontDidBecomeAvailableNotification = Notification.Name("io.multinerd.downloadableFontsCodeGenerator.fontDidBecomeAvailable")
+public let FontNameInfoKey = "FontNameInfoKey"
+
+public typealias DownloadProgressHandler = (_ downloadedSize: Int, _ totalSize: Int, _ percentage: Int) -> Void
+public typealias DownloadCompletionHandler = (_ font: UIFont?) -> Void
+
+
 public protocol DownloadableFont: FontRepresentable {
 }
 

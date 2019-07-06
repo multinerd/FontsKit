@@ -6,6 +6,9 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
 
     public static let shared = PreinstalledFontsCodeGenerator()
     
+    
+    // MARK: - Font Names
+    
     public override func listOfFontsByFamily() -> [String : [String]] {
         
         if let cached = _cachedList?.cached {
@@ -22,7 +25,7 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
     }
 
 
-    // MARK: - Private
+    // MARK: - Code Gen
 
     internal override func _generateCodeOutput(_ named: String? = nil) -> GeneratedCodeOutput {
 
@@ -68,49 +71,5 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
         
         _cached = Cached((allCode, individualCodes))
         return _cached!.cached
-    }
-    
-    /// Override to handle problem fonts
-    internal override func _normalize(faceName: String) -> String {
-
-        let components = faceName.components(separatedBy: "-")
-
-        if components.count > 1 {
-            return _normalize(fontName: components[1]).lowercaseFirst
-        } else {
-
-            // Handle problem fonts
-            let newFaceName = handleProblemFonts(faceName: faceName) ?? faceName
-
-            // Let's see if we can determine the type based on capitalization
-            let fontNameLowercaseStart = newFaceName.lowercaseFirst
-
-            var displayString = ""
-            var isCollecting = false
-
-            for char in fontNameLowercaseStart {
-                guard !isCollecting else {
-                    displayString += String(char)
-                    continue
-                }
-
-                if ("A"..."z").contains(char) {
-                    displayString += String(char)
-                    isCollecting = true
-                }
-            }
-
-            return displayString.isEmpty || faceName.lowercased() == displayString.lowercased() ? "regular" : displayString.lowercaseFirst
-        }
-    }
-    
-    /// Some fonts give off unexpected behaviours, we must handle accordingly
-    private func handleProblemFonts(faceName: String) -> String? {
-        
-        if faceName.contains("Damascus") {
-            return faceName.replacingOccurrences(of: "Damascus", with: "")
-        }
-        
-        return nil
     }
 }
