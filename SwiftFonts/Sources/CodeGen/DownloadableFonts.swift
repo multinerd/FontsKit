@@ -1,7 +1,7 @@
 public extension Fonts {
 // MARK: - Al-Firat
 enum AlFirat: String, DownloadableFont {
-    case firat = "Al-Firat"
+    case regular = "Al-Firat"
 }
 
 // MARK: - Al-Khalil
@@ -12,7 +12,7 @@ enum AlKhalil: String, DownloadableFont {
 
 // MARK: - Al-Rafidain
 enum AlRafidain: String, DownloadableFont {
-    case rafidain = "Al-Rafidain"
+    case regular = "Al-Rafidain"
 }
 
 // MARK: - AlBayan
@@ -43,7 +43,7 @@ enum AndaleMono: String, DownloadableFont {
 
 // MARK: - Apple-Chancery
 enum AppleChancery: String, DownloadableFont {
-    case chancery = "Apple-Chancery"
+    case regular = "Apple-Chancery"
 }
 
 // MARK: - AppleBraille
@@ -134,7 +134,7 @@ enum Beirut: String, DownloadableFont {
 
 // MARK: - BigCaslon-Medium
 enum BigCaslonMedium: String, DownloadableFont {
-    case medium = "BigCaslon-Medium"
+    case regular = "BigCaslon-Medium"
 }
 
 // MARK: - BookAntiqua
@@ -188,17 +188,17 @@ enum CorsivaHebrew: String, DownloadableFont {
 
 // MARK: - DFKaiShu-SB-Estd-BF
 enum DFKaiShuSBEstdBF: String, DownloadableFont {
-    case sB = "DFKaiShu-SB-Estd-BF"
+    case regular = "DFKaiShu-SB-Estd-BF"
 }
 
 // MARK: - DFWaWaSC-W5
 enum DFWaWaSCW5: String, DownloadableFont {
-    case w5 = "DFWaWaSC-W5"
+    case regular = "DFWaWaSC-W5"
 }
 
 // MARK: - DFWaWaTC-W5
 enum DFWaWaTCW5: String, DownloadableFont {
-    case w5 = "DFWaWaTC-W5"
+    case regular = "DFWaWaTC-W5"
 }
 
 // MARK: - DecoTypeNaskh
@@ -296,22 +296,22 @@ enum HiraKakuProW3: String, DownloadableFont {
 
 // MARK: - HiraKakuStd-W8
 enum HiraKakuStdW8: String, DownloadableFont {
-    case w8 = "HiraKakuStd-W8"
+    case regular = "HiraKakuStd-W8"
 }
 
 // MARK: - HiraKakuStdN-W8
 enum HiraKakuStdNW8: String, DownloadableFont {
-    case w8 = "HiraKakuStdN-W8"
+    case regular = "HiraKakuStdN-W8"
 }
 
 // MARK: - HiraMaruPro-W4
 enum HiraMaruProW4: String, DownloadableFont {
-    case w4 = "HiraMaruPro-W4"
+    case regular = "HiraMaruPro-W4"
 }
 
 // MARK: - HiraMaruProN-W4
 enum HiraMaruProNW4: String, DownloadableFont {
-    case w4 = "HiraMaruProN-W4"
+    case regular = "HiraMaruProN-W4"
 }
 
 // MARK: - HiraMinPro-W3
@@ -583,17 +583,17 @@ enum Raya: String, DownloadableFont {
 
 // MARK: - SIL-Hei-Med-Jian
 enum SILHeiMedJian: String, DownloadableFont {
-    case hei = "SIL-Hei-Med-Jian"
+    case regular = "SIL-Hei-Med-Jian"
 }
 
 // MARK: - SIL-Kai-Reg-Jian
 enum SILKaiRegJian: String, DownloadableFont {
-    case kai = "SIL-Kai-Reg-Jian"
+    case regular = "SIL-Kai-Reg-Jian"
 }
 
 // MARK: - STBaoli-SC-Regular
 enum STBaoliSCRegular: String, DownloadableFont {
-    case sC = "STBaoli-SC-Regular"
+    case regular = "STBaoli-SC-Regular"
 }
 
 // MARK: - STFangsong
@@ -703,7 +703,7 @@ enum STKaitiSCRegular: String, DownloadableFont {
 
 // MARK: - STLibian-SC-Regular
 enum STLibianSCRegular: String, DownloadableFont {
-    case sC = "STLibian-SC-Regular"
+    case regular = "STLibian-SC-Regular"
 }
 
 // MARK: - STSongti-SC-Regular
@@ -810,12 +810,12 @@ enum Webdings: String, DownloadableFont {
 
 // MARK: - Weibei-SC-Bold
 enum WeibeiSCBold: String, DownloadableFont {
-    case sC = "Weibei-SC-Bold"
+    case regular = "Weibei-SC-Bold"
 }
 
 // MARK: - Weibei-TC-Bold
 enum WeibeiTCBold: String, DownloadableFont {
-    case tC = "Weibei-TC-Bold"
+    case regular = "Weibei-TC-Bold"
 }
 
 // MARK: - Wingdings-Regular
