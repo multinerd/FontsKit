@@ -5,25 +5,23 @@ import UIKit
 internal class PreinstalledFontsCodeGenerator: CodeGenerator {
 
     public static let shared = PreinstalledFontsCodeGenerator()
-    
-    
+
     // MARK: - Font Names
-    
-    public override func listOfFontsByFamily() -> [String : [String]] {
-        
+
+    public override func listOfFontsByFamily() -> [String: [String]] {
+
         if let cached = _cachedList?.cached {
             return cached
         }
-        
+
         var dict: [String: [String]] = [:]
         UIFont.familyNames.sorted().forEach({ (family) in
             dict[family] = UIFont.fontNames(forFamilyName: family)
         })
-        
-        _cachedList =  Cached(dict)
+
+        _cachedList = Cached(dict)
         return dict
     }
-
 
     // MARK: - Code Gen
 
@@ -54,21 +52,21 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
             let fontNameEnum = sortedFontNames.map { "    case \(_normalize(faceName: $0)) = \"\($0)\"" }
             let fontNamesEnum = fontNameEnum.joined(separator: "\n")
 
-            let individualFamily =  """
+            let individualFamily = """
 
-                    // MARK: - \(familyName)
-                    enum \(_normalize(fontName: familyName)): String, FontRepresentable {
-                    \(fontNamesEnum)
-                    }
+                                   // MARK: - \(familyName)
+                                   enum \(_normalize(fontName: familyName)): String, FontRepresentable {
+                                   \(fontNamesEnum)
+                                   }
 
-                    """
+                                   """
 
             allCode += individualFamily
             individualCodes[familyName] = individualFamily
         }
 
         allCode += "}"
-        
+
         _cached = Cached((allCode, individualCodes))
         return _cached!.cached
     }
