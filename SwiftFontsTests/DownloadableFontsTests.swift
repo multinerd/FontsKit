@@ -27,7 +27,8 @@ class DownloadableFontsTests: XCTestCase {
         
         
         
-    
+    // MARK: - Testing
+
     func test_downloadableFontsNames() {
         
         let installedFonts = PreinstalledFontsCodeGenerator.shared.listOfFontNames()

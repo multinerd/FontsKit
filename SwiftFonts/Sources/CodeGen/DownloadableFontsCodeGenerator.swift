@@ -19,7 +19,11 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
             return cached
         }
         
-        let iOSFonts = try? IOSFonts(fromURL: URL(string: "https://iosfontlist.com/fonts.json")!)
+        // Fonts.json is taken from https://iosfontlist.com/fonts.json
+        // Included in app in the event the site is no longer accessible.
+        // TODO Find a native way to group font names by font family.
+        let url = URL(fileURLWithPath: Bundle.main.path(forResource: "Fonts", ofType: ".json")!)
+        let iOSFonts = try? IOSFonts(fromURL: url)
         let downloadable = iOSFonts?.filter { !$0.fonts.filter { $0.downloadable != "0.0" && $0.preinstalled == "0.0" }.isEmpty }
         
         var dict: [String: [String]] = [:]
@@ -94,6 +98,8 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
         
         _cached = Cached((allCode, individualCodes))
         return _cached!.cached
+    }
+        return nil
     }
 }
 
