@@ -1,14 +1,13 @@
-
 import UIKit
 
 class GoogleViewController: UITableViewController {
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -19,5 +18,4 @@ class GoogleViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
