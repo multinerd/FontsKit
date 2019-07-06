@@ -106,12 +106,17 @@ class CodeGenerator: CodeGen {
         
         let components = faceName.components(separatedBy: "-")
         
+        if faceName.contains("FZLTZHK") {
+            print(true)
+        }
+        
         if components.count > 1 {
-            return _normalize(fontName: components[1]).lowercaseFirst
+            let newFaceName = handleProblemFontsWithHyphens(faceName: faceName) ?? components[1]
+            return newFaceName.isEmpty ? "regular" : _normalize(fontName: newFaceName).lowercaseFirst
         } else {
             
             // Handle problem fonts
-            let newFaceName = handleProblemFonts(faceName: faceName) ?? faceName
+            let newFaceName = handleProblem(faceName: faceName) ?? faceName
             
             // Let's see if we can determine the type based on capitalization
             let fontNameLowercaseStart = newFaceName.lowercaseFirst
@@ -136,15 +141,37 @@ class CodeGenerator: CodeGen {
     }
     
     /// Some fonts give off unexpected behaviours, we must handle accordingly
-    private func handleProblemFonts(faceName: String) -> String? {
-        
-        if faceName.contains("Al-Khalil") {
-            return faceName.replacingOccurrences(of: "Al-Khalil", with: "")
-        }
+    private func handleProblem(faceName: String) -> String? {
         
         if faceName.contains("Damascus") {
             return faceName.replacingOccurrences(of: "Damascus", with: "")
         }
+  
+        return nil
+    }
+    
+    private func handleProblem(fontName: String) -> String? {
+        
+        if fontName.contains("Al-Khalil") {
+            return fontName.replacingOccurrences(of: "Al-Khalil", with: "")
+        }
+        
+        if fontName.contains("Lantinghei-TC-") {
+            return fontName.replacingOccurrences(of: "Lantinghei-TC-", with: "")
+        }
+        
+        return nil
+    }
+    
+    private func handleProblemFontsWithHyphens(faceName: String) -> String? {
+        
+
+        
+//        if faceName.contains("FZLT") {
+//            return faceName.replacingOccurrences(of: "FZLT", with: "")
+//        }
+//        
+
         
         return nil
     }
