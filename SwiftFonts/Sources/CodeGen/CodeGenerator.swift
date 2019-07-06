@@ -10,6 +10,8 @@ import Foundation
 internal typealias GeneratedCodeOutput = (full: String, individual: [String: String])
 
 protocol CodeGen {
+    func listOfFontsByFamily() -> [String : [String]]
+    
     func generateCodeToDebugger(named: String?)
     func generateCode(named: String?, directoryPath: String)
     func generateCode(named: String?, filePath: String)
@@ -18,7 +20,27 @@ protocol CodeGen {
 }
 
 class CodeGenerator: CodeGen {
+    
+    // MARK: - Caching
+    
+    internal var _cached: Cached<GeneratedCodeOutput>? = nil
+    
+    internal var _cachedList: Cached<[String:[String]]>? = nil
 
+    
+    // MARK: - Override by subclass
+    
+    func listOfFontsByFamily() -> [String : [String]] {
+        fatalError("You must override this method!")
+    }
+    
+    func _generateCodeOutput(_ named: String?) -> GeneratedCodeOutput {
+        fatalError("You must override this method!")
+    }
+
+    
+    // MARK: - Default Implementations
+    
     /// Outputs code to debugger output.
     func generateCodeToDebugger(named: String? = nil) {
         
@@ -31,47 +53,35 @@ class CodeGenerator: CodeGen {
     /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
     /// - Parameter directoryPath: The output directory path.
     func generateCode(named: String? = nil, directoryPath: String) {
-    
-    _generateCodeOutput(named).individual.forEach {
-        do {
-            let folderPath = "\(directoryPath)\($0.key)"
-            try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: true, attributes: [:])
-            
-            let filePath = "\(folderPath)/\($0.key).swift"
-            FileManager.default.createFile(atPath: filePath, contents: nil, attributes: [:])
-            
-            try $0.value.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            print(error.userInfo)
+        
+        _generateCodeOutput(named).individual.forEach {
+            do {
+                let folderPath = "\(directoryPath)\($0.key)"
+                try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: true, attributes: [:])
+                
+                let filePath = "\(folderPath)/\($0.key).swift"
+                FileManager.default.createFile(atPath: filePath, contents: nil, attributes: [:])
+                
+                try $0.value.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
+            } catch let error as NSError {
+                print(error.userInfo)
+            }
         }
+        print("Code output to \(directoryPath)")
     }
-    print("Code output to \(directoryPath)")
-}
     
     /// Output a single file containing all the fonts.
     /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
     /// - Parameter filePath: The output file path.
     func generateCode(named: String? = nil, filePath: String) {
-    
-    do {
-        try _generateCodeOutput(named).full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
-    } catch let error as NSError {
-        print(error.userInfo)
+        
+        do {
+            try _generateCodeOutput(named).full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
+        } catch let error as NSError {
+            print(error.userInfo)
+        }
+        print("Code output to \(filePath)")
     }
-    print("Code output to \(filePath)")
-}
-    
-    
-    func _generateCodeOutput(_ named: String?) -> GeneratedCodeOutput {
-        fatalError("Must override this method!")
-    }
-    
-    
-    // MARK: - Caching
-    
-    internal var _cached: Cached<GeneratedCodeOutput>? = nil
-
-    
     
     // MARK: - Helpers
     
@@ -116,49 +126,9 @@ class CodeGenerator: CodeGen {
 }
 
 
-public class Cached<T> {
-    
-    private var _cached: T
-    
-    // Set cache
-    public init(_ cache: T) {
-        _cached = cache
-    }
 
-    // Get cached
-    public var cached: T {
-        return _cached
-    }
-}
 
-extension String {
-    
-    var first: String {
-        return String(prefix(1))
-    }
-    
-    var last: String {
-        return String(suffix(1))
-    }
-    
-    var uppercaseFirst: String {
-        return first.uppercased() + String(dropFirst())
-    }
-    
-    var lowercaseFirst: String {
-        return first.lowercased() + String(dropFirst())
-    }
-    
-    var trimmed: String {
-        return self.trimmingCharacters(in: .whitespaces)
-    }
-    
-    func remove(prefix: String) -> String {
-        
-        guard hasPrefix(prefix) else { return self }
-        return String(dropFirst(prefix.count))
-    }
-}
+
 
 
 
