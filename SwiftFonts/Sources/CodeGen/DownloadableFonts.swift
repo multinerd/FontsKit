@@ -715,15 +715,15 @@ public extension Fonts.Downloadable {
     // MARK: - Lantinghei SC
     enum LantingheiSC: String, DownloadableFont {
         case regular = "FZLTTHK--GBK1-0"
-        case regular = "FZLTXHK--GBK1-0"
-        case regular = "FZLTZHK--GBK1-0"
+        case regular2 = "FZLTXHK--GBK1-0"
+        case regular3 = "FZLTZHK--GBK1-0"
     }
 
     // MARK: - Lantinghei TC
     enum LantingheiTC: String, DownloadableFont {
         case regular = "FZLTTHB--B51-0"
-        case regular = "FZLTXHB--B51-0"
-        case regular = "FZLTZHB--B51-0"
+        case regular2 = "FZLTXHB--B51-0"
+        case regular3 = "FZLTZHB--B51-0"
     }
 
     // MARK: - Lao MN
@@ -1165,7 +1165,7 @@ public extension Fonts.Downloadable {
     // MARK: - STHeiti
     enum STHeiti: String, DownloadableFont {
         case regular = "STHeiti"
-        case regular = "STXihei"
+        case regular2 = "STXihei"
     }
 
     // MARK: - STIX Two Math

@@ -1,6 +1,5 @@
 import Foundation
 
-internal typealias FontListOutput = (downloadable: [IOSFont], installed: [IOSFont])
 internal typealias GeneratedCodeOutput = (full: String, individual: [String: String])
 
 protocol CodeGen {

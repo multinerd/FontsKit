@@ -12,22 +12,47 @@ public typealias DownloadCompletionHandler = (_ font: UIFont?) -> Void
 public protocol DownloadableFont: FontRepresentable {
 }
 
-extension DownloadableFont {
+extension UIFont {
 
-    public func fontExists() -> Bool {
+    public static func downloadableFontNames(excludeInstalled: Bool = true) -> [String] {
 
-        return UIFont(name: self.rawValue, size: UndefinedFontSize) != nil
+        let dict = [kCTFontDownloadableAttribute: kCFBooleanTrue] as CFDictionary
+
+        let downloadableDescriptor = CTFontDescriptorCreateWithAttributes(dict)
+        guard let cfMatchedDescriptors = CTFontDescriptorCreateMatchingFontDescriptors(downloadableDescriptor, nil) else {
+            return []
+        }
+
+        guard let matchedDescriptors = cfMatchedDescriptors as? [CTFontDescriptor] else {
+            return []
+        }
+
+        var downloadableFonts = matchedDescriptors.compactMap { (descriptor) -> String? in
+            let attributes = CTFontDescriptorCopyAttributes(descriptor) as NSDictionary
+            return attributes[kCTFontNameAttribute as String] as? String
+        }
+
+        if excludeInstalled {
+            downloadableFonts = Array(Set(downloadableFonts).subtracting(UIFont.familyNames.flatMap { UIFont.fontNames(forFamilyName: $0) }))
+        }
+
+        return downloadableFonts
     }
 
-    public func preloadFont() {
+    public class func fontExists(name: String) -> Bool {
 
-        if fontExists() {
+        return UIFont(name: name, size: UndefinedFontSize) != nil
+    }
+
+    public class func preload(name: String) {
+
+        if fontExists(name: name) {
             return
         }
-        downloadFontWithName(name: self.rawValue, size: UndefinedFontSize)
+        downloadFontWithName(name: name, size: UndefinedFontSize)
     }
 
-    public func downloadFontWithName(name: String, size: CGFloat, progress: DownloadProgressHandler? = nil, completion: DownloadCompletionHandler? = nil) {
+    public class func downloadFontWithName(name: String, size: CGFloat, progress: DownloadProgressHandler? = nil, completion: DownloadCompletionHandler? = nil) {
 
         let wrappedCompletionHandler = { (postNotification: Bool) -> Void in
             DispatchQueue.main.async {
@@ -38,7 +63,7 @@ extension DownloadableFont {
                 completion?(font)
             }
         }
-        if fontExists() {
+        if fontExists(name: name) {
             wrappedCompletionHandler(false)
             return
         }
