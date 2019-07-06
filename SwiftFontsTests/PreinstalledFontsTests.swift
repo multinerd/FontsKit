@@ -3,67 +3,66 @@ import XCTest
 
 class PreinstalledFontsTests: XCTestCase {
 
-	let generator = PreinstalledFontsCodeGenerator.shared
+    let generator = PreinstalledFontsCodeGenerator.shared
 
     // MARK: - Generic Tests
-    
+
     func test() {
+
         XCTAssertNotNil(generator)
     }
-    
+
     func test_listByFamily() {
+
         let results = generator.listOfFontsByFamily()
         print(results)
         XCTAssertNotNil(results)
     }
-    
+
     // MARK: - Code Gen
-    
+
     func test_codeGen() {
-        
+
         generator.generateCode(filePath: "\(codeGenDir)/PreinstalledFonts.swift")
     }
-    
-    
-    
-    
-	// MARK: - Testing
+
+    // MARK: - Testing
 
     let fontName = "Typewriter"
-    
-	// MARK: Debugger
 
-	/// Generate code to debugger
-	func test_toDebugger() {
+    // MARK: Debugger
 
-		generator.generateCodeToDebugger()
-	}
+    /// Generate code to debugger
+    func test_toDebugger() {
 
-	// MARK: Full
+        generator.generateCodeToDebugger()
+    }
 
-	/// Generate all fonts to file
-	func test_full_all() {
+    // MARK: Full
 
-		generator.generateCode(filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
-	}
+    /// Generate all fonts to file
+    func test_full_all() {
 
-	/// Generate some font to file
-	func test_full_some() {
+        generator.generateCode(filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
+    }
 
-		generator.generateCode(named: fontName, filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
-	}
+    /// Generate some font to file
+    func test_full_some() {
 
-	// MARK: Individual
+        generator.generateCode(named: fontName, filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/PreinstalledFonts.swift")
+    }
 
-	/// Generate all fonts to individual file
-	func test_individual_all() {
+    // MARK: Individual
 
-		generator.generateCode(directoryPath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSFonts/")
-	}
+    /// Generate all fonts to individual file
+    func test_individual_all() {
 
-	/// Generate some font to individual file
-	func test_individual_some() {
+        generator.generateCode(directoryPath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSFonts/")
+    }
 
-		generator.generateCode(named: fontName, directoryPath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSFonts/")
-	}
+    /// Generate some font to individual file
+    func test_individual_some() {
+
+        generator.generateCode(named: fontName, directoryPath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/iOSFonts/")
+    }
 }
