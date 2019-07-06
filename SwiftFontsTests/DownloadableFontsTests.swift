@@ -5,16 +5,25 @@ class DownloadableFontsTests: XCTestCase {
 
     let generator = DownloadableFontsCodeGenerator.shared
     
+    // MARK: - Generic Tests
+    
     func test() {
         XCTAssertNotNil(generator)
     }
 
-    /// Generate all fonts to file
-    func test_full_all() {
-        
-        generator.generateCode(filePath: "/Users/multinerd/Documents/_Fonts/Swiftly-Font/SwiftFonts/Sources/CodeGen/DownloadableFonts.swift")
-
+    func test_listByFamily() {
+        let results = generator.listOfFontsByFamily()
+        print(results)
+        XCTAssertNotNil(results)
     }
+    
+    // MARK: - Code Gen
+    
+    func test_codeGen() {
+        
+        generator.generateCode(filePath: "\(codeGenDir)/DownloadableFonts.swift")
+    }
+
         
         
         
