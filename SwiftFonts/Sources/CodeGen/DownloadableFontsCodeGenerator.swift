@@ -13,9 +13,7 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
     
     public static let shared = DownloadableFontsCodeGenerator()
     
-    internal var _cachedList: Cached<[String:[String]]>? = nil
-    
-    public func listOfFontsByFamily() -> [String : [String]] {
+    public override func listOfFontsByFamily() -> [String : [String]] {
         
         if let cached = _cachedList?.cached {
             return cached
@@ -30,7 +28,7 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
         })
         
         _cachedList =  Cached(dict)
-        return _cachedList!.cached
+        return dict
     }
     
     public func listOfFontNames(excludeInstalled: Bool = true) -> [String] {

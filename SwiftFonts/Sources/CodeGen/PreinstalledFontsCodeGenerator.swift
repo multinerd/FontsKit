@@ -6,6 +6,22 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
 
     public static let shared = PreinstalledFontsCodeGenerator()
     
+    public override func listOfFontsByFamily() -> [String : [String]] {
+        
+        if let cached = _cachedList?.cached {
+            return cached
+        }
+        
+        var dict: [String: [String]] = [:]
+        UIFont.familyNames.sorted().forEach({ (family) in
+            dict[family] = UIFont.fontNames(forFamilyName: family)
+        })
+        
+        _cachedList =  Cached(dict)
+        return dict
+    }
+    
+    
     /// Get a list of installed font family names
     public func listOfFamilyNames() -> [String] {
         return UIFont.familyNames
