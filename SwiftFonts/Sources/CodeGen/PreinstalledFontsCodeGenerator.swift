@@ -20,17 +20,6 @@ internal class PreinstalledFontsCodeGenerator: CodeGenerator {
         _cachedList =  Cached(dict)
         return dict
     }
-    
-    
-    /// Get a list of installed font family names
-    public func listOfFamilyNames() -> [String] {
-        return UIFont.familyNames
-    }
-    
-    /// Get a list of installed font  names
-    public func listOfFontNames() -> [String] {
-        return listOfFamilyNames().flatMap{UIFont.fontNames(forFamilyName: $0)}
-    }
 
 
     // MARK: - Private

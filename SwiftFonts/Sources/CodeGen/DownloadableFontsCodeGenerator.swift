@@ -35,14 +35,6 @@ internal class DownloadableFontsCodeGenerator: CodeGenerator {
         return dict
     }
     
-    public func listOfFontNames(excludeInstalled: Bool = true) -> [String] {
-        return UIFont.downloadableFontNames(excludeInstalled: excludeInstalled)
-    }
-    
-    
-
-
-
     
     
     internal override func _generateCodeOutput(_ named: String? = nil) -> GeneratedCodeOutput {

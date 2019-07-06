@@ -39,6 +39,18 @@ class CodeGenerator: CodeGen {
     }
 
     
+    // MARK: - Fonts Names
+    
+    /// Get a list of installed font family names
+    func listOfFamilyNames() -> [String] {
+        return listOfFontsByFamily().compactMap {$0.key}
+    }
+    
+    /// Get a list of installed font  names
+    func listOfFontNames() -> [String] {
+        return listOfFontsByFamily().flatMap {$0.value}
+    }
+    
     // MARK: - Default Implementations
     
     /// Outputs code to debugger output.
