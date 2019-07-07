@@ -81,7 +81,7 @@ class CodeGenerator: CodeGen {
     /// - Parameter named: An optional font name to generate. Can be ommited to generate all fonts.
     /// - Parameter filePath: The output file path.
     func generateCode(named: String? = nil, filePath: String) {
-
+        
         do {
             try _generateCodeOutput(named).full.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
         } catch let error as NSError {
@@ -92,6 +92,30 @@ class CodeGenerator: CodeGen {
 
     // MARK: - Helpers
 
+    open func _normalize(variantName: String) -> String {
+        switch Variant(rawValue: variantName) {
+        case .thin: return "Thin"
+        case .thinItalic: return "ThinItalic"
+        case .extraLight: return "ExtraLight"
+        case .extraLightItalic: return "ExtraLightItalic"
+        case .light: return "Light"
+        case .lightItalic: return "LightItalic"
+        case .regular: return "Regular"
+        case .regularItalic: return "Italic"
+        case .medium: return "Medium"
+        case .mediumItalic: return "MediumItalic"
+        case .semibold: return "SemiBold"
+        case .semiboldItalic: return "SemiBoldItalic"
+        case .bold: return "Bold"
+        case .boldItalic: return "BoldItalic"
+        case .extraBold: return "ExtraBold"
+        case .extraBoldItalic: return "ExtraBoldItalic"
+        case .black: return "Black"
+        case .blackItalic: return "BlackItalic"
+        default: fatalError("The variant \(variantName) is not recognized.")
+        }
+    }
+    
     open func _normalize(fontName: String) -> String {
 
         return (handleProblem(fontName: fontName) ?? fontName).replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "_", with: "").replacingOccurrences(of: " ", with: "")
@@ -154,13 +178,4 @@ class CodeGenerator: CodeGen {
         return nil
     }
 
-    private func handleProblemFontsWithHyphens(faceName: String) -> String? {
-
-        //        if faceName.contains("FZLT") {
-        //            return faceName.replacingOccurrences(of: "FZLT", with: "")
-        //        }
-        //
-
-        return nil
-    }
 }

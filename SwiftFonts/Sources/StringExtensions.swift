@@ -27,4 +27,11 @@ extension String {
         guard hasPrefix(prefix) else { return self }
         return String(dropFirst(prefix.count))
     }
+    
+    func append(path: String) -> String {
+        if !self.hasSuffix("/") {
+            return self + "/" + path
+        }
+        return self + path
+    }
 }
